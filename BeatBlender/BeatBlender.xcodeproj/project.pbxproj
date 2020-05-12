@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B288510246839D200E9670B /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B28850F246839D200E9670B /* Request.swift */; };
 		1BF716F22466E48B0004C843 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF716F12466E48B0004C843 /* AppDelegate.swift */; };
 		1BF716F42466E48B0004C843 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF716F32466E48B0004C843 /* SceneDelegate.swift */; };
 		1BF716F62466E48B0004C843 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF716F52466E48B0004C843 /* ContentView.swift */; };
@@ -16,8 +17,6 @@
 		1BF717092466E48F0004C843 /* BeatBlenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF717082466E48F0004C843 /* BeatBlenderTests.swift */; };
 		1BF717142466E48F0004C843 /* BeatBlenderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF717132466E48F0004C843 /* BeatBlenderUITests.swift */; };
 		1BF717232466E69E0004C843 /* BeatBlenderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF717222466E69E0004C843 /* BeatBlenderClient.swift */; };
-		1BF717252466E7120004C843 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF717242466E7120004C843 /* Utils.swift */; };
-		1BF71736246713F80004C843 /* UtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF71735246713F80004C843 /* UtilsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B28850F246839D200E9670B /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		1BF716EE2466E48B0004C843 /* BeatBlender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatBlender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BF716F12466E48B0004C843 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BF716F32466E48B0004C843 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,8 +53,6 @@
 		1BF717132466E48F0004C843 /* BeatBlenderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatBlenderUITests.swift; sourceTree = "<group>"; };
 		1BF717152466E48F0004C843 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BF717222466E69E0004C843 /* BeatBlenderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatBlenderClient.swift; sourceTree = "<group>"; };
-		1BF717242466E7120004C843 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		1BF71735246713F80004C843 /* UtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +89,7 @@
 				1BF716EF2466E48B0004C843 /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		1BF716EF2466E48B0004C843 /* Products */ = {
 			isa = PBXGroup;
@@ -128,7 +127,6 @@
 		1BF717072466E48F0004C843 /* BeatBlenderTests */ = {
 			isa = PBXGroup;
 			children = (
-				1BF71734246713C60004C843 /* Client */,
 				1BF717082466E48F0004C843 /* BeatBlenderTests.swift */,
 				1BF7170A2466E48F0004C843 /* Info.plist */,
 			);
@@ -148,15 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				1BF717222466E69E0004C843 /* BeatBlenderClient.swift */,
-				1BF717242466E7120004C843 /* Utils.swift */,
-			);
-			path = Client;
-			sourceTree = "<group>";
-		};
-		1BF71734246713C60004C843 /* Client */ = {
-			isa = PBXGroup;
-			children = (
-				1BF71735246713F80004C843 /* UtilsTests.swift */,
+				1B28850F246839D200E9670B /* Request.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -171,6 +161,7 @@
 				1BF716EA2466E48B0004C843 /* Sources */,
 				1BF716EB2466E48B0004C843 /* Frameworks */,
 				1BF716EC2466E48B0004C843 /* Resources */,
+				1B536DF8246B6CF200F130DE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -241,7 +232,7 @@
 				};
 			};
 			buildConfigurationList = 1BF716E92466E48B0004C843 /* Build configuration list for PBXProject "BeatBlender" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.4";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -287,12 +278,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1B536DF8246B6CF200F130DE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\nset -e\n\ndefaults write com.apple.dt.Xcode DVTTextEditorTrimTrailingWhitespace -bool YES\ndefaults write com.apple.dt.Xcode DVTTextEditorTrimWhitespaceOnlyLines -bool YES\n\ndefaults write com.apple.dt.Xcode DVTTextIndentTabWidth -int 2\ndefaults write com.apple.dt.Xcode DVTTextIndentWidth -int 2\n\ndefaults write com.apple.dt.Xcode DVTTextPageGuideLocation -int 100\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1BF716EA2466E48B0004C843 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BF717252466E7120004C843 /* Utils.swift in Sources */,
+				1B288510246839D200E9670B /* Request.swift in Sources */,
 				1BF716F22466E48B0004C843 /* AppDelegate.swift in Sources */,
 				1BF717232466E69E0004C843 /* BeatBlenderClient.swift in Sources */,
 				1BF716F42466E48B0004C843 /* SceneDelegate.swift in Sources */,
@@ -305,7 +316,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BF717092466E48F0004C843 /* BeatBlenderTests.swift in Sources */,
-				1BF71736246713F80004C843 /* UtilsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
