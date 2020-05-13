@@ -29,7 +29,7 @@ struct BeatBlenderRequest {
     func post(
         endpoint: String,
         requestBody: BeatBlenderRequestBody,
-        completion: @escaping (Result<[String: Any], APIError>) -> Void
+        completion: @escaping (Result<Tensorflow_Magenta_NoteSequence, APIError>) -> Void
     ) {
         var request = getUrlRequest(endpoint: endpoint)
         request.httpMethod = "POST"
@@ -41,18 +41,24 @@ struct BeatBlenderRequest {
         }
         request.httpBody = encodedHttpBody
         let task = session.dataTask(with: request) { data, response, _ in
-            guard let httpResponse = response as? HTTPURLResponse, 200 ... 201 ~= httpResponse.statusCode,
-                let jsonData = data else {
+            guard let httpResponse = response as? HTTPURLResponse, 200 ... 201 ~= httpResponse.statusCode else {
                 completion(.failure(.responseError))
                 return
             }
 
-            do {
-                let sampleData = try JSONSerialization.jsonObject(with: jsonData, options: [])
-                completion(.success(sampleData as! [String: Any]))
-            } catch {
-                completion(.failure(.decodingError))
-            }
+			do {
+				let noteSequence = try Tensorflow_Magenta_NoteSequence(serializedData: data!)
+				completion(.success(noteSequence))
+			} catch {
+				completion(.failure(.decodingError))
+			}
+
+//            do {
+//                let sampleData = try JSONSerialization.jsonObject(with: jsonData, options: [])
+//                completion(.success(sampleData as! [String: Any]))
+//            } catch {
+//                completion(.failure(.decodingError))
+//            }
         }
         task.resume()
     }
