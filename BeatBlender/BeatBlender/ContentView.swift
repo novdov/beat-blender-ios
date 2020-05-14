@@ -20,18 +20,15 @@ struct ContentView: View {
     }
 
     func sample() {
-        let body = BeatBlenderRequestBody(numSamples: 1, temperature: 0.5)
+        let body = BeatBlenderRequestBody(numSamples: 2, temperature: 0.5)
         spliceRequest.post(endpoint: "/sample", requestBody: body, completion: { result in
             switch result {
             case let .success(sampleData):
-                let arr = sampleData["samples"] as! NSArray
-                guard let jsonString: String = stringifyJson(withJSONObject: arr[0] as! [String: Any]) else {
-                    return
-                }
-                guard let noteSequence: Tensorflow_Magenta_NoteSequence = jsonToNoteSequence(jsonString: jsonString) else {
-                    return
-                }
-                print(noteSequence)
+				let samplesArray = sampleData["samples"] as! Array<Any>
+				guard let noteSequences: [Tensorflow_Magenta_NoteSequence] = samplesToNoteSequences(samplesArray: samplesArray) else {
+					return
+				}
+                print(noteSequences)
             case let .failure(error):
                 print(error)
             }
