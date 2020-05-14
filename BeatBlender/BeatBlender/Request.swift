@@ -1,6 +1,6 @@
 import Foundation
 
-typealias ResponseType = Dictionary<String, Any>
+typealias ResponseType = [String: Any]
 
 enum APIError: Error {
     case responseError
@@ -31,7 +31,7 @@ struct BeatBlenderRequest {
     func post(
         endpoint: String,
         requestBody: BeatBlenderRequestBody,
-		completion: @escaping (Result<ResponseType, APIError>) -> Void
+        completion: @escaping (Result<ResponseType, APIError>) -> Void
     ) {
         var request = getUrlRequest(endpoint: endpoint)
         request.httpMethod = "POST"
@@ -44,16 +44,16 @@ struct BeatBlenderRequest {
         request.httpBody = encodedHttpBody
         let task = session.dataTask(with: request) { data, response, _ in
             guard let httpResponse = response as? HTTPURLResponse, 200 ... 201 ~= httpResponse.statusCode,
-				let jsonData = data else {
+                let jsonData = data else {
                 completion(.failure(.responseError))
                 return
             }
 
-			guard let sampleData = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? ResponseType else {
-				completion(.failure(.decodingError))
-				return
-			}
-			completion(.success(sampleData))
+            guard let sampleData = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? ResponseType else {
+                completion(.failure(.decodingError))
+                return
+            }
+            completion(.success(sampleData))
         }
         task.resume()
     }
