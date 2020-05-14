@@ -1,13 +1,13 @@
 import Foundation
 
 class NoteSequenceModel {
-	let beatBlenderRequest: BeatBlenderRequest
+    let beatBlenderRequest: BeatBlenderRequest
 
-	init(baseUrl: String) {
-		self.beatBlenderRequest = BeatBlenderRequest(baseUrl: baseUrl)
-	}
+    init(baseUrl: String) {
+        beatBlenderRequest = BeatBlenderRequest(baseUrl: baseUrl)
+    }
 
-	func sample() {}
+    func sample() {}
 
-	func interpolate() {}
+    func interpolate() {}
 }

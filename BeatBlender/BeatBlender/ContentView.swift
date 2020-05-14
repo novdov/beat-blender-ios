@@ -24,10 +24,10 @@ struct ContentView: View {
         spliceRequest.post(endpoint: "/sample", requestBody: body, completion: { result in
             switch result {
             case let .success(sampleData):
-				let samplesArray = sampleData["samples"] as! Array<Any>
-				guard let noteSequences: [Tensorflow_Magenta_NoteSequence] = samplesToNoteSequences(samplesArray: samplesArray) else {
-					return
-				}
+                let samplesArray = sampleData["samples"] as! [Any]
+                guard let noteSequences: [Tensorflow_Magenta_NoteSequence] = samplesToNoteSequences(samplesArray: samplesArray) else {
+                    return
+                }
                 print(noteSequences)
             case let .failure(error):
                 print(error)
