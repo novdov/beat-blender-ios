@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B0DEAEC246D2C8900B2637D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0DEAEB246D2C8900B2637D /* Utils.swift */; };
+		1B0DEAF2246D348500B2637D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0DEAF1246D348500B2637D /* Model.swift */; };
 		1B288510246839D200E9670B /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B28850F246839D200E9670B /* Request.swift */; };
+		1B424468246BB98800EFD266 /* music.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B424467246BB98800EFD266 /* music.pb.swift */; };
+		1B42446B246BBD0E00EFD266 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 1B42446A246BBD0E00EFD266 /* SwiftProtobuf */; };
 		1BF716F22466E48B0004C843 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF716F12466E48B0004C843 /* AppDelegate.swift */; };
 		1BF716F42466E48B0004C843 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF716F32466E48B0004C843 /* SceneDelegate.swift */; };
 		1BF716F62466E48B0004C843 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF716F52466E48B0004C843 /* ContentView.swift */; };
@@ -16,7 +20,6 @@
 		1BF716FE2466E48F0004C843 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BF716FC2466E48F0004C843 /* LaunchScreen.storyboard */; };
 		1BF717092466E48F0004C843 /* BeatBlenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF717082466E48F0004C843 /* BeatBlenderTests.swift */; };
 		1BF717142466E48F0004C843 /* BeatBlenderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF717132466E48F0004C843 /* BeatBlenderUITests.swift */; };
-		1BF717232466E69E0004C843 /* BeatBlenderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF717222466E69E0004C843 /* BeatBlenderClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B0DEAEB246D2C8900B2637D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		1B0DEAF1246D348500B2637D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1B28850F246839D200E9670B /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		1B424467246BB98800EFD266 /* music.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = music.pb.swift; sourceTree = "<group>"; };
 		1BF716EE2466E48B0004C843 /* BeatBlender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatBlender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BF716F12466E48B0004C843 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BF716F32466E48B0004C843 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,7 +58,6 @@
 		1BF7170F2466E48F0004C843 /* BeatBlenderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeatBlenderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BF717132466E48F0004C843 /* BeatBlenderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatBlenderUITests.swift; sourceTree = "<group>"; };
 		1BF717152466E48F0004C843 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1BF717222466E69E0004C843 /* BeatBlenderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatBlenderClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B42446B246BBD0E00EFD266 /* SwiftProtobuf in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +110,8 @@
 		1BF716F02466E48B0004C843 /* BeatBlender */ = {
 			isa = PBXGroup;
 			children = (
-				1BF717212466E56C0004C843 /* Client */,
+				1B424467246BB98800EFD266 /* music.pb.swift */,
+				1B28850F246839D200E9670B /* Request.swift */,
 				1BF716F12466E48B0004C843 /* AppDelegate.swift */,
 				1BF716F32466E48B0004C843 /* SceneDelegate.swift */,
 				1BF716F52466E48B0004C843 /* ContentView.swift */,
@@ -112,6 +119,8 @@
 				1BF716FC2466E48F0004C843 /* LaunchScreen.storyboard */,
 				1BF716FF2466E48F0004C843 /* Info.plist */,
 				1BF716F92466E48F0004C843 /* Preview Content */,
+				1B0DEAEB246D2C8900B2637D /* Utils.swift */,
+				1B0DEAF1246D348500B2637D /* Model.swift */,
 			);
 			path = BeatBlender;
 			sourceTree = "<group>";
@@ -142,15 +151,6 @@
 			path = BeatBlenderUITests;
 			sourceTree = "<group>";
 		};
-		1BF717212466E56C0004C843 /* Client */ = {
-			isa = PBXGroup;
-			children = (
-				1BF717222466E69E0004C843 /* BeatBlenderClient.swift */,
-				1B28850F246839D200E9670B /* Request.swift */,
-			);
-			path = Client;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,6 +167,9 @@
 			dependencies = (
 			);
 			name = BeatBlender;
+			packageProductDependencies = (
+				1B42446A246BBD0E00EFD266 /* SwiftProtobuf */,
+			);
 			productName = BeatBlender;
 			productReference = 1BF716EE2466E48B0004C843 /* BeatBlender.app */;
 			productType = "com.apple.product-type.application";
@@ -239,6 +242,9 @@
 				Base,
 			);
 			mainGroup = 1BF716E52466E48B0004C843;
+			packageReferences = (
+				1B424469246BBD0E00EFD266 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
+			);
 			productRefGroup = 1BF716EF2466E48B0004C843 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -282,11 +288,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B0DEAF2246D348500B2637D /* Model.swift in Sources */,
 				1B288510246839D200E9670B /* Request.swift in Sources */,
 				1BF716F22466E48B0004C843 /* AppDelegate.swift in Sources */,
-				1BF717232466E69E0004C843 /* BeatBlenderClient.swift in Sources */,
 				1BF716F42466E48B0004C843 /* SceneDelegate.swift in Sources */,
 				1BF716F62466E48B0004C843 /* ContentView.swift in Sources */,
+				1B424468246BB98800EFD266 /* music.pb.swift in Sources */,
+				1B0DEAEC246D2C8900B2637D /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,6 +619,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1B424469246BBD0E00EFD266 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-protobuf";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1B42446A246BBD0E00EFD266 /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B424469246BBD0E00EFD266 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1BF716E62466E48B0004C843 /* Project object */;
 }
