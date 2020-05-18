@@ -14,7 +14,7 @@ let config = loadJson(filename: "config")!
 struct ContentView: View {
     let spliceRequest = BeatBlenderRequest(baseUrl: config["serverUrl"] as! String)
     var midiPlayerHelper = MIDIPlayerHelper()
-	@State var midiPlayer: AVMIDIPlayer?
+    @State var midiPlayer: AVMIDIPlayer?
     @State var sampledNoteSequences = [Tensorflow_Magenta_NoteSequence]()
 
     var body: some View {
@@ -27,16 +27,16 @@ struct ContentView: View {
 
     func playDrums(noteSequence: Tensorflow_Magenta_NoteSequence) {
         guard let musicSequence = noteSequence.toMusicSequence(),
-			let data = midiPlayerHelper.musicSequenceToData(musicSequence) else {
+            let data = midiPlayerHelper.musicSequenceToData(musicSequence) else {
             return
         }
         let midiData = data.takeUnretainedValue() as Data
         midiPlayer = midiPlayerHelper.createAVMIDIPlayer(withData: midiData)
-		data.release()
-		midiPlayer?.play()
+        data.release()
+        midiPlayer?.play()
     }
 
-	func sample() {
+    func sample() {
         let body = BeatBlenderRequestBody(numSamples: 1, temperature: 0.5)
         spliceRequest.post(endpoint: "/sample", requestBody: body, completion: { result in
             switch result {
