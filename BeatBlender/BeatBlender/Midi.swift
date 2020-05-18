@@ -2,12 +2,12 @@ import AVFoundation
 import Foundation
 
 struct MIDIPlayerHelper {
-    let soundFontFilename = "FluidR3_GM"
+    let soundFontFilename = "1115-Standard Rock Set"
     let defaultResolution: Int16 = 480
 
     func createAVMIDIPlayer(withData midiData: Data) -> AVMIDIPlayer? {
         guard let url = Bundle.main.url(forResource: soundFontFilename, withExtension: "sf2") else {
-            print("Error: could not load sound font - \(soundFontFilename)")
+            print("Error: could not load \(soundFontFilename)")
             return nil
         }
 
