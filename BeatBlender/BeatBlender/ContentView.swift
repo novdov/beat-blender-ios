@@ -51,7 +51,7 @@ struct ContentView: View {
             case let .failure(error):
                 print(error)
             }
-		})
+	})
     }
 }
 
