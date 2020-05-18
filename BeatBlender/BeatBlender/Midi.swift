@@ -35,37 +35,3 @@ struct MIDIPlayerHelper {
         return data
     }
 }
-
-extension Tensorflow_Magenta_NoteSequence {
-    func toMusicSequence() -> MusicSequence? {
-        var musicSequence: MusicSequence?
-        var status = NewMusicSequence(&musicSequence)
-        guard status == OSStatus(noErr) else {
-            print("[\(status)] Error: could not convert Notes to MusicSequence")
-            return nil
-        }
-
-        var track: MusicTrack?
-        status = MusicSequenceNewTrack(musicSequence!, &track)
-        guard status == OSStatus(noErr) else {
-            print("[\(status)] Error: could not create MusicTrack from MusicSequence")
-            return nil
-        }
-
-        for note in notes {
-            var message = MIDINoteMessage(
-                channel: 10,
-                note: UInt8(note.pitch),
-                velocity: UInt8(note.velocity),
-                releaseVelocity: 0,
-                duration: Float32(note.endTime - note.startTime)
-            )
-            let timeStamp = MusicTimeStamp(1.0)
-            status = MusicTrackNewMIDINoteEvent(track!, timeStamp, &message)
-            if status != OSStatus(noErr) {
-                print("[\(status)] Error: could not create MIDINoteEvent")
-            }
-        }
-        return musicSequence
-    }
-}
