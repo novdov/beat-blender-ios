@@ -29,3 +29,12 @@ func stringifyJson(withJSONObject dict: [String: Any]) -> String? {
     let jsonString = String(data: jsonData, encoding: String.Encoding.utf8)
     return jsonString
 }
+
+func loadJson(filename _: String) -> [String: Any]? {
+    guard let file = Bundle.main.url(forResource: "config", withExtension: "json") else {
+        return nil
+    }
+    guard let data = try? Data(contentsOf: file) else { return nil }
+    let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+    return jsonData
+}

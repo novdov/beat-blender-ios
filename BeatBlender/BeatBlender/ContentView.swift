@@ -6,10 +6,16 @@
 //  Copyright © 2020 novdov. All rights reserved.
 //
 
+import AVFoundation
 import SwiftUI
 
+let config = loadJson(filename: "config")!
+
 struct ContentView: View {
-    let spliceRequest = BeatBlenderRequest(baseUrl: "http://localhost:8080/model")
+    let spliceRequest = BeatBlenderRequest(baseUrl: config["serverUrl"] as! String)
+    var midiPlayerHelper = MIDIPlayerHelper()
+	@State var midiPlayer: AVMIDIPlayer?
+    @State var sampledNoteSequences = [Tensorflow_Magenta_NoteSequence]()
 
     var body: some View {
         Button(action: {
@@ -19,8 +25,19 @@ struct ContentView: View {
         }
     }
 
-    func sample() {
-        let body = BeatBlenderRequestBody(numSamples: 2, temperature: 0.5)
+    func playDrums(noteSequence: Tensorflow_Magenta_NoteSequence) {
+        guard let musicSequence = noteSequence.toMusicSequence(),
+			let data = midiPlayerHelper.musicSequenceToData(musicSequence) else {
+            return
+        }
+        let midiData = data.takeUnretainedValue() as Data
+        midiPlayer = midiPlayerHelper.createAVMIDIPlayer(withData: midiData)
+		data.release()
+		midiPlayer?.play()
+    }
+
+	func sample() {
+        let body = BeatBlenderRequestBody(numSamples: 1, temperature: 0.5)
         spliceRequest.post(endpoint: "/sample", requestBody: body, completion: { result in
             switch result {
             case let .success(sampleData):
@@ -28,7 +45,9 @@ struct ContentView: View {
                 guard let noteSequences: [Tensorflow_Magenta_NoteSequence] = samplesToNoteSequences(samplesArray: samplesArray) else {
                     return
                 }
-                print(noteSequences)
+                for noteSequence in noteSequences {
+                    self.playDrums(noteSequence: noteSequence)
+                }
             case let .failure(error):
                 print(error)
             }
