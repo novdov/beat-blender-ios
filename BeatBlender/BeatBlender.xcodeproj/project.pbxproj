@@ -8,18 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		1B0DEAEC246D2C8900B2637D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0DEAEB246D2C8900B2637D /* Utils.swift */; };
-		1B0DEAF2246D348500B2637D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0DEAF1246D348500B2637D /* Model.swift */; };
 		1B288510246839D200E9670B /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B28850F246839D200E9670B /* Request.swift */; };
 		1B424468246BB98800EFD266 /* music.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B424467246BB98800EFD266 /* music.pb.swift */; };
 		1B42446B246BBD0E00EFD266 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 1B42446A246BBD0E00EFD266 /* SwiftProtobuf */; };
+		1B42EA7B246E4EFC00593190 /* Midi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B42EA7A246E4EFC00593190 /* Midi.swift */; };
+		1B8CFD1E247214B600B7680D /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8CFD1D247214B600B7680D /* Music.swift */; };
+		1B97B18D246FC949003A34AA /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B97B18C246FC3F1003A34AA /* config.json */; };
 		1BF716F22466E48B0004C843 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF716F12466E48B0004C843 /* AppDelegate.swift */; };
 		1BF716F42466E48B0004C843 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF716F32466E48B0004C843 /* SceneDelegate.swift */; };
 		1BF716F62466E48B0004C843 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF716F52466E48B0004C843 /* ContentView.swift */; };
 		1BF716F82466E48F0004C843 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BF716F72466E48F0004C843 /* Assets.xcassets */; };
 		1BF716FB2466E48F0004C843 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BF716FA2466E48F0004C843 /* Preview Assets.xcassets */; };
-		1BF716FE2466E48F0004C843 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BF716FC2466E48F0004C843 /* LaunchScreen.storyboard */; };
 		1BF717092466E48F0004C843 /* BeatBlenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF717082466E48F0004C843 /* BeatBlenderTests.swift */; };
 		1BF717142466E48F0004C843 /* BeatBlenderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF717132466E48F0004C843 /* BeatBlenderUITests.swift */; };
+		1BF99FCF24735634009050C1 /* 1115-Standard Rock Set.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 1BF99FCE24735634009050C1 /* 1115-Standard Rock Set.sf2 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,16 +43,17 @@
 
 /* Begin PBXFileReference section */
 		1B0DEAEB246D2C8900B2637D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		1B0DEAF1246D348500B2637D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1B28850F246839D200E9670B /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		1B424467246BB98800EFD266 /* music.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = music.pb.swift; sourceTree = "<group>"; };
+		1B42EA7A246E4EFC00593190 /* Midi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Midi.swift; sourceTree = "<group>"; };
+		1B8CFD1D247214B600B7680D /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		1B97B18C246FC3F1003A34AA /* config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 		1BF716EE2466E48B0004C843 /* BeatBlender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatBlender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BF716F12466E48B0004C843 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BF716F32466E48B0004C843 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1BF716F52466E48B0004C843 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1BF716F72466E48F0004C843 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1BF716FA2466E48F0004C843 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		1BF716FD2466E48F0004C843 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1BF716FF2466E48F0004C843 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BF717042466E48F0004C843 /* BeatBlenderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeatBlenderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BF717082466E48F0004C843 /* BeatBlenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatBlenderTests.swift; sourceTree = "<group>"; };
@@ -58,6 +61,8 @@
 		1BF7170F2466E48F0004C843 /* BeatBlenderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeatBlenderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BF717132466E48F0004C843 /* BeatBlenderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatBlenderUITests.swift; sourceTree = "<group>"; };
 		1BF717152466E48F0004C843 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BF99FCD2472C958009050C1 /* BeatBlender.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = BeatBlender.entitlements; sourceTree = "<group>"; };
+		1BF99FCE24735634009050C1 /* 1115-Standard Rock Set.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "1115-Standard Rock Set.sf2"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,9 +91,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1BCDEABA247203BF00C7D5EB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1BF99FCE24735634009050C1 /* 1115-Standard Rock Set.sf2 */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		1BF716E52466E48B0004C843 = {
 			isa = PBXGroup;
 			children = (
+				1BCDEABA247203BF00C7D5EB /* Resources */,
 				1BF716F02466E48B0004C843 /* BeatBlender */,
 				1BF717072466E48F0004C843 /* BeatBlenderTests */,
 				1BF717122466E48F0004C843 /* BeatBlenderUITests */,
@@ -110,17 +124,19 @@
 		1BF716F02466E48B0004C843 /* BeatBlender */ = {
 			isa = PBXGroup;
 			children = (
+				1BF99FCD2472C958009050C1 /* BeatBlender.entitlements */,
+				1B97B18C246FC3F1003A34AA /* config.json */,
 				1B424467246BB98800EFD266 /* music.pb.swift */,
 				1B28850F246839D200E9670B /* Request.swift */,
 				1BF716F12466E48B0004C843 /* AppDelegate.swift */,
 				1BF716F32466E48B0004C843 /* SceneDelegate.swift */,
 				1BF716F52466E48B0004C843 /* ContentView.swift */,
 				1BF716F72466E48F0004C843 /* Assets.xcassets */,
-				1BF716FC2466E48F0004C843 /* LaunchScreen.storyboard */,
 				1BF716FF2466E48F0004C843 /* Info.plist */,
 				1BF716F92466E48F0004C843 /* Preview Content */,
 				1B0DEAEB246D2C8900B2637D /* Utils.swift */,
-				1B0DEAF1246D348500B2637D /* Model.swift */,
+				1B42EA7A246E4EFC00593190 /* Midi.swift */,
+				1B8CFD1D247214B600B7680D /* Music.swift */,
 			);
 			path = BeatBlender;
 			sourceTree = "<group>";
@@ -261,8 +277,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BF716FE2466E48F0004C843 /* LaunchScreen.storyboard in Resources */,
 				1BF716FB2466E48F0004C843 /* Preview Assets.xcassets in Resources */,
+				1B97B18D246FC949003A34AA /* config.json in Resources */,
+				1BF99FCF24735634009050C1 /* 1115-Standard Rock Set.sf2 in Resources */,
 				1BF716F82466E48F0004C843 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,13 +305,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B0DEAF2246D348500B2637D /* Model.swift in Sources */,
 				1B288510246839D200E9670B /* Request.swift in Sources */,
 				1BF716F22466E48B0004C843 /* AppDelegate.swift in Sources */,
 				1BF716F42466E48B0004C843 /* SceneDelegate.swift in Sources */,
+				1B42EA7B246E4EFC00593190 /* Midi.swift in Sources */,
 				1BF716F62466E48B0004C843 /* ContentView.swift in Sources */,
 				1B424468246BB98800EFD266 /* music.pb.swift in Sources */,
 				1B0DEAEC246D2C8900B2637D /* Utils.swift in Sources */,
+				1B8CFD1E247214B600B7680D /* Music.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,17 +346,6 @@
 			targetProxy = 1BF717102466E48F0004C843 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		1BF716FC2466E48F0004C843 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1BF716FD2466E48F0004C843 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1BF717162466E48F0004C843 /* Debug */ = {
@@ -459,6 +466,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BeatBlender/BeatBlender.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"BeatBlender/Preview Content\"";
 				DEVELOPMENT_TEAM = 2V95432XBT;
@@ -470,6 +479,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.novdov.BeatBlender;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -479,6 +490,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BeatBlender/BeatBlender.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"BeatBlender/Preview Content\"";
 				DEVELOPMENT_TEAM = 2V95432XBT;
@@ -490,6 +503,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.novdov.BeatBlender;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
