@@ -6,6 +6,13 @@ struct MIDIPlayerHelper {
   let defaultResolution: Int16 = 480
 
   func createAVMIDIPlayer(withData midiData: Data) -> AVMIDIPlayer? {
+    do {
+      try AVAudioSession.sharedInstance().setCategory(.playback)
+    } catch {
+      print("could not set Audio Session \(error.localizedDescription)")
+      return nil
+    }
+
     guard let url = Bundle.main.url(forResource: soundFontFilename, withExtension: "sf2") else {
       print("Error: could not load \(soundFontFilename)")
       return nil
