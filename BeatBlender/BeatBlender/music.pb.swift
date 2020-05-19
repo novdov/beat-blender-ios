@@ -31,8 +31,8 @@ import SwiftProtobuf
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
 private struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
-    struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
-    typealias Version = _2
+  struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
+  typealias Version = _2
 }
 
 /// A message containing a symbolic music sequence. The design is largely
@@ -42,2270 +42,2374 @@ private struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVer
 /// by time.
 /// Next tag: 22
 struct Tensorflow_Magenta_NoteSequence {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// Unique id.
+  var id: String {
+    get { _storage._id }
+    set { _uniqueStorage()._id = newValue }
+  }
+
+  /// The path of the file relative to the root of the collection.
+  var filename: String {
+    get { _storage._filename }
+    set { _uniqueStorage()._filename = newValue }
+  }
+
+  /// A unique id to differentiate multiple pieces taken from the same input
+  /// file.
+  var referenceNumber: Int64 {
+    get { _storage._referenceNumber }
+    set { _uniqueStorage()._referenceNumber = newValue }
+  }
+
+  /// The collection from which the file comes. This can be shorthand e.g.
+  /// "bach". One purpose is to allow for easy selection of all or some files
+  /// from a particular source.
+  var collectionName: String {
+    get { _storage._collectionName }
+    set { _uniqueStorage()._collectionName = newValue }
+  }
+
+  /// MIDI ticks per quarter note, also known as resolution or PPQ ("pulses per
+  /// quarter").
+  /// There is no widely-used default. A default of 220 is assumed per the choice
+  /// made in third_party/py/pretty_midi.
+  var ticksPerQuarter: Int32 {
+    get { _storage._ticksPerQuarter }
+    set { _uniqueStorage()._ticksPerQuarter = newValue }
+  }
+
+  /// Lacking a time signature, 4/4 is assumed per MIDI standard.
+  var timeSignatures: [Tensorflow_Magenta_NoteSequence.TimeSignature] {
+    get { _storage._timeSignatures }
+    set { _uniqueStorage()._timeSignatures = newValue }
+  }
+
+  /// Lacking a key signature, C Major is assumed per MIDI standard.
+  var keySignatures: [Tensorflow_Magenta_NoteSequence.KeySignature] {
+    get { _storage._keySignatures }
+    set { _uniqueStorage()._keySignatures = newValue }
+  }
+
+  /// Lacking a tempo change, 120 qpm is assumed per MIDI standard.
+  var tempos: [Tensorflow_Magenta_NoteSequence.Tempo] {
+    get { _storage._tempos }
+    set { _uniqueStorage()._tempos = newValue }
+  }
+
+  /// A Note combines a MIDI NoteOn and NoteOff into one event with duration.
+  var notes: [Tensorflow_Magenta_NoteSequence.Note] {
+    get { _storage._notes }
+    set { _uniqueStorage()._notes = newValue }
+  }
+
+  /// The total time of the Sequence in seconds.
+  /// Currently the total time is defined as the end time of the last note in the
+  /// sequence, and any control changes or rests that occur after the end of the
+  /// last note are not included in this time.
+  /// Note: In the future, this time will be allowed to extend beyond the last
+  /// note end time in order to represent padding. Magenta.js already uses this
+  /// interpretation of the field.
+  /// TODO(adarob): Update existing code to allow for this new interpretation.
+  var totalTime: Double {
+    get { _storage._totalTime }
+    set { _uniqueStorage()._totalTime = newValue }
+  }
+
+  /// The total time of the sequence in quantized steps.
+  /// This has the same meaning as the total_time field.
+  /// Note: In the future, steps will be allowed to extend beyond the last note
+  /// end steps in order to represent padding. Magenta.js already uses this
+  /// interpretation of the field.
+  /// TODO(adarob): Update existing code to allow for this new interpretation.
+  var totalQuantizedSteps: Int64 {
+    get { _storage._totalQuantizedSteps }
+    set { _uniqueStorage()._totalQuantizedSteps = newValue }
+  }
+
+  /// MIDI-specific events that are generally relevant for performance, metadata
+  /// storage or re-synthesis but not for processing the music score.
+  var pitchBends: [Tensorflow_Magenta_NoteSequence.PitchBend] {
+    get { _storage._pitchBends }
+    set { _uniqueStorage()._pitchBends = newValue }
+  }
+
+  var controlChanges: [Tensorflow_Magenta_NoteSequence.ControlChange] {
+    get { _storage._controlChanges }
+    set { _uniqueStorage()._controlChanges = newValue }
+  }
+
+  /// Score-related information about parts.
+  var partInfos: [Tensorflow_Magenta_NoteSequence.PartInfo] {
+    get { _storage._partInfos }
+    set { _uniqueStorage()._partInfos = newValue }
+  }
+
+  /// Source-related information.
+  var sourceInfo: Tensorflow_Magenta_NoteSequence.SourceInfo {
+    get { _storage._sourceInfo ?? Tensorflow_Magenta_NoteSequence.SourceInfo() }
+    set { _uniqueStorage()._sourceInfo = newValue }
+  }
+
+  /// Returns true if `sourceInfo` has been explicitly set.
+  var hasSourceInfo: Bool { _storage._sourceInfo != nil }
+  /// Clears the value of `sourceInfo`. Subsequent reads from it will return its default value.
+  mutating func clearSourceInfo() { _uniqueStorage()._sourceInfo = nil }
+
+  /// Arbitrary textual annotations.
+  var textAnnotations: [Tensorflow_Magenta_NoteSequence.TextAnnotation] {
+    get { _storage._textAnnotations }
+    set { _uniqueStorage()._textAnnotations = newValue }
+  }
+
+  /// Annotations indicating sections within a piece.
+  var sectionAnnotations: [Tensorflow_Magenta_NoteSequence.SectionAnnotation] {
+    get { _storage._sectionAnnotations }
+    set { _uniqueStorage()._sectionAnnotations = newValue }
+  }
+
+  /// Instructions on how to play back the sections within a piece.
+  var sectionGroups: [Tensorflow_Magenta_NoteSequence.SectionGroup] {
+    get { _storage._sectionGroups }
+    set { _uniqueStorage()._sectionGroups = newValue }
+  }
+
+  /// Information about how/if this sequence was quantized.
+  var quantizationInfo: Tensorflow_Magenta_NoteSequence.QuantizationInfo {
+    get { _storage._quantizationInfo ?? Tensorflow_Magenta_NoteSequence.QuantizationInfo() }
+    set { _uniqueStorage()._quantizationInfo = newValue }
+  }
+
+  /// Returns true if `quantizationInfo` has been explicitly set.
+  var hasQuantizationInfo: Bool { _storage._quantizationInfo != nil }
+  /// Clears the value of `quantizationInfo`. Subsequent reads from it will return its default value.
+  mutating func clearQuantizationInfo() { _uniqueStorage()._quantizationInfo = nil }
+
+  /// Information about how this sequence was extracted from a larger source
+  /// sequence (if that was the case).
+  var subsequenceInfo: Tensorflow_Magenta_NoteSequence.SubsequenceInfo {
+    get { _storage._subsequenceInfo ?? Tensorflow_Magenta_NoteSequence.SubsequenceInfo() }
+    set { _uniqueStorage()._subsequenceInfo = newValue }
+  }
+
+  /// Returns true if `subsequenceInfo` has been explicitly set.
+  var hasSubsequenceInfo: Bool { _storage._subsequenceInfo != nil }
+  /// Clears the value of `subsequenceInfo`. Subsequent reads from it will return its default value.
+  mutating func clearSubsequenceInfo() { _uniqueStorage()._subsequenceInfo = nil }
+
+  /// Sequence metadata.
+  var sequenceMetadata: Tensorflow_Magenta_SequenceMetadata {
+    get { _storage._sequenceMetadata ?? Tensorflow_Magenta_SequenceMetadata() }
+    set { _uniqueStorage()._sequenceMetadata = newValue }
+  }
+
+  /// Returns true if `sequenceMetadata` has been explicitly set.
+  var hasSequenceMetadata: Bool { _storage._sequenceMetadata != nil }
+  /// Clears the value of `sequenceMetadata`. Subsequent reads from it will return its default value.
+  mutating func clearSequenceMetadata() { _uniqueStorage()._sequenceMetadata = nil }
+
+  /// information about instrument type.
+  var instrumentInfos: [Tensorflow_Magenta_NoteSequence.InstrumentInfo] {
+    get { _storage._instrumentInfos }
+    set { _uniqueStorage()._instrumentInfos = newValue }
+  }
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  /// Adopted from Musescore with start enum shifted to 0; see
+  /// https://musescore.org/en/plugin-development/tonal-pitch-class-enum
+  /// for details.
+  enum PitchName: SwiftProtobuf.Enum {
+    typealias RawValue = Int
+    case unknownPitchName  // = 0
+    case fFlatFlat  // = 1
+    case cFlatFlat  // = 2
+    case gFlatFlat  // = 3
+    case dFlatFlat  // = 4
+    case aFlatFlat  // = 5
+    case eFlatFlat  // = 6
+    case bFlatFlat  // = 7
+    case fFlat  // = 8
+    case cFlat  // = 9
+    case gFlat  // = 10
+    case dFlat  // = 11
+    case aFlat  // = 12
+    case eFlat  // = 13
+    case bFlat  // = 14
+    case f  // = 15
+    case c  // = 16
+    case g  // = 17
+    case d  // = 18
+    case a  // = 19
+    case e  // = 20
+    case b  // = 21
+    case fSharp  // = 22
+    case cSharp  // = 23
+    case gSharp  // = 24
+    case dSharp  // = 25
+    case aSharp  // = 26
+    case eSharp  // = 27
+    case bSharp  // = 28
+    case fSharpSharp  // = 29
+    case cSharpSharp  // = 30
+    case gSharpSharp  // = 31
+    case dSharpSharp  // = 32
+    case aSharpSharp  // = 33
+    case eSharpSharp  // = 34
+    case bSharpSharp  // = 35
+    case UNRECOGNIZED(Int)
+
+    init() {
+      self = .unknownPitchName
+    }
+
+    init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknownPitchName
+      case 1: self = .fFlatFlat
+      case 2: self = .cFlatFlat
+      case 3: self = .gFlatFlat
+      case 4: self = .dFlatFlat
+      case 5: self = .aFlatFlat
+      case 6: self = .eFlatFlat
+      case 7: self = .bFlatFlat
+      case 8: self = .fFlat
+      case 9: self = .cFlat
+      case 10: self = .gFlat
+      case 11: self = .dFlat
+      case 12: self = .aFlat
+      case 13: self = .eFlat
+      case 14: self = .bFlat
+      case 15: self = .f
+      case 16: self = .c
+      case 17: self = .g
+      case 18: self = .d
+      case 19: self = .a
+      case 20: self = .e
+      case 21: self = .b
+      case 22: self = .fSharp
+      case 23: self = .cSharp
+      case 24: self = .gSharp
+      case 25: self = .dSharp
+      case 26: self = .aSharp
+      case 27: self = .eSharp
+      case 28: self = .bSharp
+      case 29: self = .fSharpSharp
+      case 30: self = .cSharpSharp
+      case 31: self = .gSharpSharp
+      case 32: self = .dSharpSharp
+      case 33: self = .aSharpSharp
+      case 34: self = .eSharpSharp
+      case 35: self = .bSharpSharp
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    var rawValue: Int {
+      switch self {
+      case .unknownPitchName: return 0
+      case .fFlatFlat: return 1
+      case .cFlatFlat: return 2
+      case .gFlatFlat: return 3
+      case .dFlatFlat: return 4
+      case .aFlatFlat: return 5
+      case .eFlatFlat: return 6
+      case .bFlatFlat: return 7
+      case .fFlat: return 8
+      case .cFlat: return 9
+      case .gFlat: return 10
+      case .dFlat: return 11
+      case .aFlat: return 12
+      case .eFlat: return 13
+      case .bFlat: return 14
+      case .f: return 15
+      case .c: return 16
+      case .g: return 17
+      case .d: return 18
+      case .a: return 19
+      case .e: return 20
+      case .b: return 21
+      case .fSharp: return 22
+      case .cSharp: return 23
+      case .gSharp: return 24
+      case .dSharp: return 25
+      case .aSharp: return 26
+      case .eSharp: return 27
+      case .bSharp: return 28
+      case .fSharpSharp: return 29
+      case .cSharpSharp: return 30
+      case .gSharpSharp: return 31
+      case .dSharpSharp: return 32
+      case .aSharpSharp: return 33
+      case .eSharpSharp: return 34
+      case .bSharpSharp: return 35
+      case let .UNRECOGNIZED(i): return i
+      }
+    }
+  }
+
+  /// Next tag: 15
+  struct Note {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
-    /// Unique id.
-    var id: String {
-        get { _storage._id }
-        set { _uniqueStorage()._id = newValue }
+    /// MIDI pitch; see en.wikipedia.org/wiki/MIDI_Tuning_Standard for details.
+    var pitch: Int32 = 0
+
+    /// The notated pitch spelling in the score.
+    var pitchName: Tensorflow_Magenta_NoteSequence.PitchName = .unknownPitchName
+
+    /// Velocity ranging between 0 and 127.
+    var velocity: Int32 = 0
+
+    /// Start time in seconds.
+    var startTime: Double = 0
+
+    /// Quantized start time in steps.
+    var quantizedStartStep: Int64 = 0
+
+    /// End time in seconds.
+    var endTime: Double = 0
+
+    /// Quantized end time in steps.
+    var quantizedEndStep: Int64 = 0
+
+    /// Score-relative note length. E.g. a quarter note is 1/4.
+    var numerator: Int32 = 0
+
+    var denominator: Int32 = 0
+
+    /// For MIDI source data, an instrument stores all events in a track having
+    /// the same program and channel, as done by pretty-midi.
+    var instrument: Int32 = 0
+
+    /// A program selects an instrument's sound.
+    /// Note that the General MIDI documentation is 1-based, but this field is
+    /// 0-based. So GM documents program 12 as vibraphone, but this field would
+    /// be set to 11 for that instrument.
+    /// See www.midi.org/specifications/item/gm-level-1-sound-set.
+    var program: Int32 = 0
+
+    /// When true, the event is on an instrument that is a drum (MIDI channel 9).
+    var isDrum: Bool = false
+
+    /// The part index if this came from a score. Otherwise, just 0.
+    /// For example, a score may have separate parts for different instruments in
+    /// an orchestra.
+    /// If additional information is available about the part, a corresponding
+    /// PartInfo should be defined with the same index.
+    var part: Int32 = 0
+
+    /// The voice index if this came from a score. Otherwise, just 0.
+    /// For example, within a part, there may be multiple voices (e.g., Soprano,
+    /// Alto, Tenor, Bass).
+    /// Note that while voices indexes must be unique within a part, they are not
+    /// guaranteed to be unique across parts.
+    var voice: Int32 = 0
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    init() {}
+  }
+
+  struct TimeSignature {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    /// Time in seconds.
+    var time: Double = 0
+
+    var numerator: Int32 = 0
+
+    var denominator: Int32 = 0
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    init() {}
+  }
+
+  struct KeySignature {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    /// Time in seconds.
+    var time: Double = 0
+
+    var key: Tensorflow_Magenta_NoteSequence.KeySignature.Key = .c
+
+    var mode: Tensorflow_Magenta_NoteSequence.KeySignature.Mode = .major
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    enum Key: SwiftProtobuf.Enum {
+      typealias RawValue = Int
+      case c  // = 0
+      case cSharp  // = 1
+      static let dFlat = cSharp
+      case d  // = 2
+      case dSharp  // = 3
+      static let eFlat = dSharp
+      case e  // = 4
+      case f  // = 5
+      case fSharp  // = 6
+      static let gFlat = fSharp
+      case g  // = 7
+      case gSharp  // = 8
+      static let aFlat = gSharp
+      case a  // = 9
+      case aSharp  // = 10
+      static let bFlat = aSharp
+      case b  // = 11
+      case UNRECOGNIZED(Int)
+
+      init() {
+        self = .c
+      }
+
+      init?(rawValue: Int) {
+        switch rawValue {
+        case 0: self = .c
+        case 1: self = .cSharp
+        case 2: self = .d
+        case 3: self = .dSharp
+        case 4: self = .e
+        case 5: self = .f
+        case 6: self = .fSharp
+        case 7: self = .g
+        case 8: self = .gSharp
+        case 9: self = .a
+        case 10: self = .aSharp
+        case 11: self = .b
+        default: self = .UNRECOGNIZED(rawValue)
+        }
+      }
+
+      var rawValue: Int {
+        switch self {
+        case .c: return 0
+        case .cSharp: return 1
+        case .d: return 2
+        case .dSharp: return 3
+        case .e: return 4
+        case .f: return 5
+        case .fSharp: return 6
+        case .g: return 7
+        case .gSharp: return 8
+        case .a: return 9
+        case .aSharp: return 10
+        case .b: return 11
+        case let .UNRECOGNIZED(i): return i
+        }
+      }
     }
 
-    /// The path of the file relative to the root of the collection.
-    var filename: String {
-        get { _storage._filename }
-        set { _uniqueStorage()._filename = newValue }
+    enum Mode: SwiftProtobuf.Enum {
+      typealias RawValue = Int
+      case major  // = 0
+      case minor  // = 1
+      case notSpecified  // = 2
+      case mixolydian  // = 3
+      case dorian  // = 4
+      case phrygian  // = 5
+      case lydian  // = 6
+      case locrian  // = 7
+      case UNRECOGNIZED(Int)
+
+      init() {
+        self = .major
+      }
+
+      init?(rawValue: Int) {
+        switch rawValue {
+        case 0: self = .major
+        case 1: self = .minor
+        case 2: self = .notSpecified
+        case 3: self = .mixolydian
+        case 4: self = .dorian
+        case 5: self = .phrygian
+        case 6: self = .lydian
+        case 7: self = .locrian
+        default: self = .UNRECOGNIZED(rawValue)
+        }
+      }
+
+      var rawValue: Int {
+        switch self {
+        case .major: return 0
+        case .minor: return 1
+        case .notSpecified: return 2
+        case .mixolydian: return 3
+        case .dorian: return 4
+        case .phrygian: return 5
+        case .lydian: return 6
+        case .locrian: return 7
+        case let .UNRECOGNIZED(i): return i
+        }
+      }
     }
 
-    /// A unique id to differentiate multiple pieces taken from the same input
-    /// file.
-    var referenceNumber: Int64 {
-        get { _storage._referenceNumber }
-        set { _uniqueStorage()._referenceNumber = newValue }
+    init() {}
+  }
+
+  struct Tempo {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    /// Time in seconds when tempo goes into effect.
+    var time: Double = 0
+
+    /// Tempo in quarter notes per minute.
+    var qpm: Double = 0
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    init() {}
+  }
+
+  /// Stores MIDI PitchBend data. See the MIDI specification for details.
+  struct PitchBend {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    /// Time in seconds.
+    var time: Double = 0
+
+    /// Pitch bend amount in the range (-8192, 8191).
+    var bend: Int32 = 0
+
+    var instrument: Int32 = 0
+
+    var program: Int32 = 0
+
+    var isDrum: Bool = false
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    init() {}
+  }
+
+  /// Stores MIDI Control Change data. See the MIDI specification for details.
+  struct ControlChange {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    /// Time in seconds.
+    var time: Double = 0
+
+    /// Quantized time in steps.
+    var quantizedStep: Int64 = 0
+
+    /// Control (or "controller") number e.g. 0x4 = Foot Controller.
+    var controlNumber: Int32 = 0
+
+    /// The value for that controller in the range (0, 127).
+    var controlValue: Int32 = 0
+
+    var instrument: Int32 = 0
+
+    var program: Int32 = 0
+
+    var isDrum: Bool = false
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    init() {}
+  }
+
+  /// Stores score-related information about a particular part.
+  /// See usage within Note for more details.
+  struct PartInfo {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    /// The part index.
+    var part: Int32 = 0
+
+    /// The name of the part. Examples: "Piano" or "Voice".
+    var name: String = String()
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    init() {}
+  }
+
+  /// Stores information about an instrument name
+  /// See usage within Note for more details.
+  struct InstrumentInfo {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    /// The instrument index.
+    var instrument: Int32 = 0
+
+    /// The name of the instrument. Examples: "Piano" or "bass".
+    var name: String = String()
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    init() {}
+  }
+
+  /// Stores source-related information.
+  struct SourceInfo {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    /// The type of source, if it was score-based or performance-based.
+    var sourceType: Tensorflow_Magenta_NoteSequence.SourceInfo.SourceType = .unknownSourceType
+
+    /// The encoding type used in the source file.
+    var encodingType: Tensorflow_Magenta_NoteSequence.SourceInfo.EncodingType = .unknownEncodingType
+
+    /// That parser that was used to parse the source file.
+    var parser: Tensorflow_Magenta_NoteSequence.SourceInfo.Parser = .unknownParser
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    /// The type of source that was encoded in the original file.
+    enum SourceType: SwiftProtobuf.Enum {
+      typealias RawValue = Int
+      case unknownSourceType  // = 0
+
+      /// If the source was some kind of score (e.g., MusicXML, ABC, etc.).
+      /// We can expect perfect timing alignment with measures and complete
+      /// TimeSignature and KeySignature information.
+      case scoreBased  // = 1
+      case performanceBased  // = 2
+      case UNRECOGNIZED(Int)
+
+      init() {
+        self = .unknownSourceType
+      }
+
+      init?(rawValue: Int) {
+        switch rawValue {
+        case 0: self = .unknownSourceType
+        case 1: self = .scoreBased
+        case 2: self = .performanceBased
+        default: self = .UNRECOGNIZED(rawValue)
+        }
+      }
+
+      var rawValue: Int {
+        switch self {
+        case .unknownSourceType: return 0
+        case .scoreBased: return 1
+        case .performanceBased: return 2
+        case let .UNRECOGNIZED(i): return i
+        }
+      }
     }
 
-    /// The collection from which the file comes. This can be shorthand e.g.
-    /// "bach". One purpose is to allow for easy selection of all or some files
-    /// from a particular source.
-    var collectionName: String {
-        get { _storage._collectionName }
-        set { _uniqueStorage()._collectionName = newValue }
+    /// Enum for all encoding types, both score_based and performance_based.
+    enum EncodingType: SwiftProtobuf.Enum {
+      typealias RawValue = Int
+      case unknownEncodingType  // = 0
+      case musicXml  // = 1
+      case abc  // = 2
+      case midi  // = 3
+      case musicnet  // = 4
+      case UNRECOGNIZED(Int)
+
+      init() {
+        self = .unknownEncodingType
+      }
+
+      init?(rawValue: Int) {
+        switch rawValue {
+        case 0: self = .unknownEncodingType
+        case 1: self = .musicXml
+        case 2: self = .abc
+        case 3: self = .midi
+        case 4: self = .musicnet
+        default: self = .UNRECOGNIZED(rawValue)
+        }
+      }
+
+      var rawValue: Int {
+        switch self {
+        case .unknownEncodingType: return 0
+        case .musicXml: return 1
+        case .abc: return 2
+        case .midi: return 3
+        case .musicnet: return 4
+        case let .UNRECOGNIZED(i): return i
+        }
+      }
     }
 
-    /// MIDI ticks per quarter note, also known as resolution or PPQ ("pulses per
-    /// quarter").
-    /// There is no widely-used default. A default of 220 is assumed per the choice
-    /// made in third_party/py/pretty_midi.
-    var ticksPerQuarter: Int32 {
-        get { _storage._ticksPerQuarter }
-        set { _uniqueStorage()._ticksPerQuarter = newValue }
+    /// Name of parser used to parse the source file.
+    enum Parser: SwiftProtobuf.Enum {
+      typealias RawValue = Int
+      case unknownParser  // = 0
+      case music21  // = 1
+      case prettyMidi  // = 2
+
+      /// Magenta's built-in MusicXML parser.
+      case magentaMusicXml  // = 3
+
+      /// Magenta's parser for MusicNet data.
+      case magentaMusicnet  // = 4
+
+      /// Magenta's parser for ABC files.
+      case magentaAbc  // = 5
+
+      /// Javascript Tonejs/MidiConvert.
+      case tonejsMidiConvert  // = 6
+      case UNRECOGNIZED(Int)
+
+      init() {
+        self = .unknownParser
+      }
+
+      init?(rawValue: Int) {
+        switch rawValue {
+        case 0: self = .unknownParser
+        case 1: self = .music21
+        case 2: self = .prettyMidi
+        case 3: self = .magentaMusicXml
+        case 4: self = .magentaMusicnet
+        case 5: self = .magentaAbc
+        case 6: self = .tonejsMidiConvert
+        default: self = .UNRECOGNIZED(rawValue)
+        }
+      }
+
+      var rawValue: Int {
+        switch self {
+        case .unknownParser: return 0
+        case .music21: return 1
+        case .prettyMidi: return 2
+        case .magentaMusicXml: return 3
+        case .magentaMusicnet: return 4
+        case .magentaAbc: return 5
+        case .tonejsMidiConvert: return 6
+        case let .UNRECOGNIZED(i): return i
+        }
+      }
     }
 
-    /// Lacking a time signature, 4/4 is assumed per MIDI standard.
-    var timeSignatures: [Tensorflow_Magenta_NoteSequence.TimeSignature] {
-        get { _storage._timeSignatures }
-        set { _uniqueStorage()._timeSignatures = newValue }
+    init() {}
+  }
+
+  /// Stores an arbitrary text annotation associated with a point in time.
+  /// Next tag: 5
+  struct TextAnnotation {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    /// Time in seconds.
+    var time: Double = 0
+
+    /// Quantized time in steps.
+    var quantizedStep: Int64 = 0
+
+    /// Text of the annotation.
+    var text: String = String()
+
+    /// Type of the annotation, to assist with automated interpretation.
+    var annotationType: Tensorflow_Magenta_NoteSequence.TextAnnotation.TextAnnotationType = .unknown
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    enum TextAnnotationType: SwiftProtobuf.Enum {
+      typealias RawValue = Int
+
+      /// Unknown annotation type.
+      case unknown  // = 0
+
+      /// Chord symbol as used in lead sheets. We treat text as the "ground
+      /// truth" format for chord symbols, as the semantic interpretation of
+      /// a chord symbol is often fuzzy. We defer this interpretation to
+      /// individual models, each of which can translate chord symbol strings
+      /// into model input in whatever way is deemed most appropriate for that
+      /// model.
+      ///
+      /// Some examples of chord symbol text we consider reasonable: 'C#', 'A7',
+      /// 'Fm7b5', 'N.C.', 'G(no3)', 'C/Bb', 'D-9(b5)', 'Gadd2', 'Abm(maj7)'.
+      case chordSymbol  // = 1
+
+      /// Annotation used to indicate a "beat" within a performance. This is
+      /// useful when beat information cannot be derived from the time signature
+      /// and tempo, as is the case for live performances.
+      /// This annotation does not imply that the beat is a downbeat, and it is
+      /// undefined what kind of metrical value the beat has (e.g., quarter
+      /// note).
+      /// The text content of this annotation can be application-specific.
+      case beat  // = 2
+      case UNRECOGNIZED(Int)
+
+      init() {
+        self = .unknown
+      }
+
+      init?(rawValue: Int) {
+        switch rawValue {
+        case 0: self = .unknown
+        case 1: self = .chordSymbol
+        case 2: self = .beat
+        default: self = .UNRECOGNIZED(rawValue)
+        }
+      }
+
+      var rawValue: Int {
+        switch self {
+        case .unknown: return 0
+        case .chordSymbol: return 1
+        case .beat: return 2
+        case let .UNRECOGNIZED(i): return i
+        }
+      }
     }
 
-    /// Lacking a key signature, C Major is assumed per MIDI standard.
-    var keySignatures: [Tensorflow_Magenta_NoteSequence.KeySignature] {
-        get { _storage._keySignatures }
-        set { _uniqueStorage()._keySignatures = newValue }
+    init() {}
+  }
+
+  /// Information about how/if this sequence was quantized.
+  struct QuantizationInfo {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    var resolution: Tensorflow_Magenta_NoteSequence.QuantizationInfo.OneOf_Resolution?
+
+    /// How many quantization steps per quarter note of music.
+    var stepsPerQuarter: Int32 {
+      get {
+        if case let .stepsPerQuarter(v)? = resolution { return v }
+        return 0
+      }
+      set { resolution = .stepsPerQuarter(newValue) }
     }
 
-    /// Lacking a tempo change, 120 qpm is assumed per MIDI standard.
-    var tempos: [Tensorflow_Magenta_NoteSequence.Tempo] {
-        get { _storage._tempos }
-        set { _uniqueStorage()._tempos = newValue }
-    }
-
-    /// A Note combines a MIDI NoteOn and NoteOff into one event with duration.
-    var notes: [Tensorflow_Magenta_NoteSequence.Note] {
-        get { _storage._notes }
-        set { _uniqueStorage()._notes = newValue }
-    }
-
-    /// The total time of the Sequence in seconds.
-    /// Currently the total time is defined as the end time of the last note in the
-    /// sequence, and any control changes or rests that occur after the end of the
-    /// last note are not included in this time.
-    /// Note: In the future, this time will be allowed to extend beyond the last
-    /// note end time in order to represent padding. Magenta.js already uses this
-    /// interpretation of the field.
-    /// TODO(adarob): Update existing code to allow for this new interpretation.
-    var totalTime: Double {
-        get { _storage._totalTime }
-        set { _uniqueStorage()._totalTime = newValue }
-    }
-
-    /// The total time of the sequence in quantized steps.
-    /// This has the same meaning as the total_time field.
-    /// Note: In the future, steps will be allowed to extend beyond the last note
-    /// end steps in order to represent padding. Magenta.js already uses this
-    /// interpretation of the field.
-    /// TODO(adarob): Update existing code to allow for this new interpretation.
-    var totalQuantizedSteps: Int64 {
-        get { _storage._totalQuantizedSteps }
-        set { _uniqueStorage()._totalQuantizedSteps = newValue }
-    }
-
-    /// MIDI-specific events that are generally relevant for performance, metadata
-    /// storage or re-synthesis but not for processing the music score.
-    var pitchBends: [Tensorflow_Magenta_NoteSequence.PitchBend] {
-        get { _storage._pitchBends }
-        set { _uniqueStorage()._pitchBends = newValue }
-    }
-
-    var controlChanges: [Tensorflow_Magenta_NoteSequence.ControlChange] {
-        get { _storage._controlChanges }
-        set { _uniqueStorage()._controlChanges = newValue }
-    }
-
-    /// Score-related information about parts.
-    var partInfos: [Tensorflow_Magenta_NoteSequence.PartInfo] {
-        get { _storage._partInfos }
-        set { _uniqueStorage()._partInfos = newValue }
-    }
-
-    /// Source-related information.
-    var sourceInfo: Tensorflow_Magenta_NoteSequence.SourceInfo {
-        get { _storage._sourceInfo ?? Tensorflow_Magenta_NoteSequence.SourceInfo() }
-        set { _uniqueStorage()._sourceInfo = newValue }
-    }
-
-    /// Returns true if `sourceInfo` has been explicitly set.
-    var hasSourceInfo: Bool { _storage._sourceInfo != nil }
-    /// Clears the value of `sourceInfo`. Subsequent reads from it will return its default value.
-    mutating func clearSourceInfo() { _uniqueStorage()._sourceInfo = nil }
-
-    /// Arbitrary textual annotations.
-    var textAnnotations: [Tensorflow_Magenta_NoteSequence.TextAnnotation] {
-        get { _storage._textAnnotations }
-        set { _uniqueStorage()._textAnnotations = newValue }
-    }
-
-    /// Annotations indicating sections within a piece.
-    var sectionAnnotations: [Tensorflow_Magenta_NoteSequence.SectionAnnotation] {
-        get { _storage._sectionAnnotations }
-        set { _uniqueStorage()._sectionAnnotations = newValue }
-    }
-
-    /// Instructions on how to play back the sections within a piece.
-    var sectionGroups: [Tensorflow_Magenta_NoteSequence.SectionGroup] {
-        get { _storage._sectionGroups }
-        set { _uniqueStorage()._sectionGroups = newValue }
-    }
-
-    /// Information about how/if this sequence was quantized.
-    var quantizationInfo: Tensorflow_Magenta_NoteSequence.QuantizationInfo {
-        get { _storage._quantizationInfo ?? Tensorflow_Magenta_NoteSequence.QuantizationInfo() }
-        set { _uniqueStorage()._quantizationInfo = newValue }
-    }
-
-    /// Returns true if `quantizationInfo` has been explicitly set.
-    var hasQuantizationInfo: Bool { _storage._quantizationInfo != nil }
-    /// Clears the value of `quantizationInfo`. Subsequent reads from it will return its default value.
-    mutating func clearQuantizationInfo() { _uniqueStorage()._quantizationInfo = nil }
-
-    /// Information about how this sequence was extracted from a larger source
-    /// sequence (if that was the case).
-    var subsequenceInfo: Tensorflow_Magenta_NoteSequence.SubsequenceInfo {
-        get { _storage._subsequenceInfo ?? Tensorflow_Magenta_NoteSequence.SubsequenceInfo() }
-        set { _uniqueStorage()._subsequenceInfo = newValue }
-    }
-
-    /// Returns true if `subsequenceInfo` has been explicitly set.
-    var hasSubsequenceInfo: Bool { _storage._subsequenceInfo != nil }
-    /// Clears the value of `subsequenceInfo`. Subsequent reads from it will return its default value.
-    mutating func clearSubsequenceInfo() { _uniqueStorage()._subsequenceInfo = nil }
-
-    /// Sequence metadata.
-    var sequenceMetadata: Tensorflow_Magenta_SequenceMetadata {
-        get { _storage._sequenceMetadata ?? Tensorflow_Magenta_SequenceMetadata() }
-        set { _uniqueStorage()._sequenceMetadata = newValue }
-    }
-
-    /// Returns true if `sequenceMetadata` has been explicitly set.
-    var hasSequenceMetadata: Bool { _storage._sequenceMetadata != nil }
-    /// Clears the value of `sequenceMetadata`. Subsequent reads from it will return its default value.
-    mutating func clearSequenceMetadata() { _uniqueStorage()._sequenceMetadata = nil }
-
-    /// information about instrument type.
-    var instrumentInfos: [Tensorflow_Magenta_NoteSequence.InstrumentInfo] {
-        get { _storage._instrumentInfos }
-        set { _uniqueStorage()._instrumentInfos = newValue }
+    /// How many quantization steps per second.
+    var stepsPerSecond: Int32 {
+      get {
+        if case let .stepsPerSecond(v)? = resolution { return v }
+        return 0
+      }
+      set { resolution = .stepsPerSecond(newValue) }
     }
 
     var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    /// Adopted from Musescore with start enum shifted to 0; see
-    /// https://musescore.org/en/plugin-development/tonal-pitch-class-enum
-    /// for details.
-    enum PitchName: SwiftProtobuf.Enum {
-        typealias RawValue = Int
-        case unknownPitchName // = 0
-        case fFlatFlat // = 1
-        case cFlatFlat // = 2
-        case gFlatFlat // = 3
-        case dFlatFlat // = 4
-        case aFlatFlat // = 5
-        case eFlatFlat // = 6
-        case bFlatFlat // = 7
-        case fFlat // = 8
-        case cFlat // = 9
-        case gFlat // = 10
-        case dFlat // = 11
-        case aFlat // = 12
-        case eFlat // = 13
-        case bFlat // = 14
-        case f // = 15
-        case c // = 16
-        case g // = 17
-        case d // = 18
-        case a // = 19
-        case e // = 20
-        case b // = 21
-        case fSharp // = 22
-        case cSharp // = 23
-        case gSharp // = 24
-        case dSharp // = 25
-        case aSharp // = 26
-        case eSharp // = 27
-        case bSharp // = 28
-        case fSharpSharp // = 29
-        case cSharpSharp // = 30
-        case gSharpSharp // = 31
-        case dSharpSharp // = 32
-        case aSharpSharp // = 33
-        case eSharpSharp // = 34
-        case bSharpSharp // = 35
-        case UNRECOGNIZED(Int)
+    enum OneOf_Resolution: Equatable {
+      /// How many quantization steps per quarter note of music.
+      case stepsPerQuarter(Int32)
+      /// How many quantization steps per second.
+      case stepsPerSecond(Int32)
 
-        init() {
-            self = .unknownPitchName
+      #if !swift(>=4.1)
+        static func == (
+          lhs: Tensorflow_Magenta_NoteSequence.QuantizationInfo.OneOf_Resolution,
+          rhs: Tensorflow_Magenta_NoteSequence.QuantizationInfo.OneOf_Resolution
+        ) -> Bool {
+          switch (lhs, rhs) {
+          case let (.stepsPerQuarter(l), .stepsPerQuarter(r)): return l == r
+          case let (.stepsPerSecond(l), .stepsPerSecond(r)): return l == r
+          default: return false
+          }
         }
-
-        init?(rawValue: Int) {
-            switch rawValue {
-            case 0: self = .unknownPitchName
-            case 1: self = .fFlatFlat
-            case 2: self = .cFlatFlat
-            case 3: self = .gFlatFlat
-            case 4: self = .dFlatFlat
-            case 5: self = .aFlatFlat
-            case 6: self = .eFlatFlat
-            case 7: self = .bFlatFlat
-            case 8: self = .fFlat
-            case 9: self = .cFlat
-            case 10: self = .gFlat
-            case 11: self = .dFlat
-            case 12: self = .aFlat
-            case 13: self = .eFlat
-            case 14: self = .bFlat
-            case 15: self = .f
-            case 16: self = .c
-            case 17: self = .g
-            case 18: self = .d
-            case 19: self = .a
-            case 20: self = .e
-            case 21: self = .b
-            case 22: self = .fSharp
-            case 23: self = .cSharp
-            case 24: self = .gSharp
-            case 25: self = .dSharp
-            case 26: self = .aSharp
-            case 27: self = .eSharp
-            case 28: self = .bSharp
-            case 29: self = .fSharpSharp
-            case 30: self = .cSharpSharp
-            case 31: self = .gSharpSharp
-            case 32: self = .dSharpSharp
-            case 33: self = .aSharpSharp
-            case 34: self = .eSharpSharp
-            case 35: self = .bSharpSharp
-            default: self = .UNRECOGNIZED(rawValue)
-            }
-        }
-
-        var rawValue: Int {
-            switch self {
-            case .unknownPitchName: return 0
-            case .fFlatFlat: return 1
-            case .cFlatFlat: return 2
-            case .gFlatFlat: return 3
-            case .dFlatFlat: return 4
-            case .aFlatFlat: return 5
-            case .eFlatFlat: return 6
-            case .bFlatFlat: return 7
-            case .fFlat: return 8
-            case .cFlat: return 9
-            case .gFlat: return 10
-            case .dFlat: return 11
-            case .aFlat: return 12
-            case .eFlat: return 13
-            case .bFlat: return 14
-            case .f: return 15
-            case .c: return 16
-            case .g: return 17
-            case .d: return 18
-            case .a: return 19
-            case .e: return 20
-            case .b: return 21
-            case .fSharp: return 22
-            case .cSharp: return 23
-            case .gSharp: return 24
-            case .dSharp: return 25
-            case .aSharp: return 26
-            case .eSharp: return 27
-            case .bSharp: return 28
-            case .fSharpSharp: return 29
-            case .cSharpSharp: return 30
-            case .gSharpSharp: return 31
-            case .dSharpSharp: return 32
-            case .aSharpSharp: return 33
-            case .eSharpSharp: return 34
-            case .bSharpSharp: return 35
-            case let .UNRECOGNIZED(i): return i
-            }
-        }
-    }
-
-    /// Next tag: 15
-    struct Note {
-        // SwiftProtobuf.Message conformance is added in an extension below. See the
-        // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-        // methods supported on all messages.
-
-        /// MIDI pitch; see en.wikipedia.org/wiki/MIDI_Tuning_Standard for details.
-        var pitch: Int32 = 0
-
-        /// The notated pitch spelling in the score.
-        var pitchName: Tensorflow_Magenta_NoteSequence.PitchName = .unknownPitchName
-
-        /// Velocity ranging between 0 and 127.
-        var velocity: Int32 = 0
-
-        /// Start time in seconds.
-        var startTime: Double = 0
-
-        /// Quantized start time in steps.
-        var quantizedStartStep: Int64 = 0
-
-        /// End time in seconds.
-        var endTime: Double = 0
-
-        /// Quantized end time in steps.
-        var quantizedEndStep: Int64 = 0
-
-        /// Score-relative note length. E.g. a quarter note is 1/4.
-        var numerator: Int32 = 0
-
-        var denominator: Int32 = 0
-
-        /// For MIDI source data, an instrument stores all events in a track having
-        /// the same program and channel, as done by pretty-midi.
-        var instrument: Int32 = 0
-
-        /// A program selects an instrument's sound.
-        /// Note that the General MIDI documentation is 1-based, but this field is
-        /// 0-based. So GM documents program 12 as vibraphone, but this field would
-        /// be set to 11 for that instrument.
-        /// See www.midi.org/specifications/item/gm-level-1-sound-set.
-        var program: Int32 = 0
-
-        /// When true, the event is on an instrument that is a drum (MIDI channel 9).
-        var isDrum: Bool = false
-
-        /// The part index if this came from a score. Otherwise, just 0.
-        /// For example, a score may have separate parts for different instruments in
-        /// an orchestra.
-        /// If additional information is available about the part, a corresponding
-        /// PartInfo should be defined with the same index.
-        var part: Int32 = 0
-
-        /// The voice index if this came from a score. Otherwise, just 0.
-        /// For example, within a part, there may be multiple voices (e.g., Soprano,
-        /// Alto, Tenor, Bass).
-        /// Note that while voices indexes must be unique within a part, they are not
-        /// guaranteed to be unique across parts.
-        var voice: Int32 = 0
-
-        var unknownFields = SwiftProtobuf.UnknownStorage()
-
-        init() {}
-    }
-
-    struct TimeSignature {
-        // SwiftProtobuf.Message conformance is added in an extension below. See the
-        // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-        // methods supported on all messages.
-
-        /// Time in seconds.
-        var time: Double = 0
-
-        var numerator: Int32 = 0
-
-        var denominator: Int32 = 0
-
-        var unknownFields = SwiftProtobuf.UnknownStorage()
-
-        init() {}
-    }
-
-    struct KeySignature {
-        // SwiftProtobuf.Message conformance is added in an extension below. See the
-        // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-        // methods supported on all messages.
-
-        /// Time in seconds.
-        var time: Double = 0
-
-        var key: Tensorflow_Magenta_NoteSequence.KeySignature.Key = .c
-
-        var mode: Tensorflow_Magenta_NoteSequence.KeySignature.Mode = .major
-
-        var unknownFields = SwiftProtobuf.UnknownStorage()
-
-        enum Key: SwiftProtobuf.Enum {
-            typealias RawValue = Int
-            case c // = 0
-            case cSharp // = 1
-            static let dFlat = cSharp
-            case d // = 2
-            case dSharp // = 3
-            static let eFlat = dSharp
-            case e // = 4
-            case f // = 5
-            case fSharp // = 6
-            static let gFlat = fSharp
-            case g // = 7
-            case gSharp // = 8
-            static let aFlat = gSharp
-            case a // = 9
-            case aSharp // = 10
-            static let bFlat = aSharp
-            case b // = 11
-            case UNRECOGNIZED(Int)
-
-            init() {
-                self = .c
-            }
-
-            init?(rawValue: Int) {
-                switch rawValue {
-                case 0: self = .c
-                case 1: self = .cSharp
-                case 2: self = .d
-                case 3: self = .dSharp
-                case 4: self = .e
-                case 5: self = .f
-                case 6: self = .fSharp
-                case 7: self = .g
-                case 8: self = .gSharp
-                case 9: self = .a
-                case 10: self = .aSharp
-                case 11: self = .b
-                default: self = .UNRECOGNIZED(rawValue)
-                }
-            }
-
-            var rawValue: Int {
-                switch self {
-                case .c: return 0
-                case .cSharp: return 1
-                case .d: return 2
-                case .dSharp: return 3
-                case .e: return 4
-                case .f: return 5
-                case .fSharp: return 6
-                case .g: return 7
-                case .gSharp: return 8
-                case .a: return 9
-                case .aSharp: return 10
-                case .b: return 11
-                case let .UNRECOGNIZED(i): return i
-                }
-            }
-        }
-
-        enum Mode: SwiftProtobuf.Enum {
-            typealias RawValue = Int
-            case major // = 0
-            case minor // = 1
-            case notSpecified // = 2
-            case mixolydian // = 3
-            case dorian // = 4
-            case phrygian // = 5
-            case lydian // = 6
-            case locrian // = 7
-            case UNRECOGNIZED(Int)
-
-            init() {
-                self = .major
-            }
-
-            init?(rawValue: Int) {
-                switch rawValue {
-                case 0: self = .major
-                case 1: self = .minor
-                case 2: self = .notSpecified
-                case 3: self = .mixolydian
-                case 4: self = .dorian
-                case 5: self = .phrygian
-                case 6: self = .lydian
-                case 7: self = .locrian
-                default: self = .UNRECOGNIZED(rawValue)
-                }
-            }
-
-            var rawValue: Int {
-                switch self {
-                case .major: return 0
-                case .minor: return 1
-                case .notSpecified: return 2
-                case .mixolydian: return 3
-                case .dorian: return 4
-                case .phrygian: return 5
-                case .lydian: return 6
-                case .locrian: return 7
-                case let .UNRECOGNIZED(i): return i
-                }
-            }
-        }
-
-        init() {}
-    }
-
-    struct Tempo {
-        // SwiftProtobuf.Message conformance is added in an extension below. See the
-        // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-        // methods supported on all messages.
-
-        /// Time in seconds when tempo goes into effect.
-        var time: Double = 0
-
-        /// Tempo in quarter notes per minute.
-        var qpm: Double = 0
-
-        var unknownFields = SwiftProtobuf.UnknownStorage()
-
-        init() {}
-    }
-
-    /// Stores MIDI PitchBend data. See the MIDI specification for details.
-    struct PitchBend {
-        // SwiftProtobuf.Message conformance is added in an extension below. See the
-        // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-        // methods supported on all messages.
-
-        /// Time in seconds.
-        var time: Double = 0
-
-        /// Pitch bend amount in the range (-8192, 8191).
-        var bend: Int32 = 0
-
-        var instrument: Int32 = 0
-
-        var program: Int32 = 0
-
-        var isDrum: Bool = false
-
-        var unknownFields = SwiftProtobuf.UnknownStorage()
-
-        init() {}
-    }
-
-    /// Stores MIDI Control Change data. See the MIDI specification for details.
-    struct ControlChange {
-        // SwiftProtobuf.Message conformance is added in an extension below. See the
-        // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-        // methods supported on all messages.
-
-        /// Time in seconds.
-        var time: Double = 0
-
-        /// Quantized time in steps.
-        var quantizedStep: Int64 = 0
-
-        /// Control (or "controller") number e.g. 0x4 = Foot Controller.
-        var controlNumber: Int32 = 0
-
-        /// The value for that controller in the range (0, 127).
-        var controlValue: Int32 = 0
-
-        var instrument: Int32 = 0
-
-        var program: Int32 = 0
-
-        var isDrum: Bool = false
-
-        var unknownFields = SwiftProtobuf.UnknownStorage()
-
-        init() {}
-    }
-
-    /// Stores score-related information about a particular part.
-    /// See usage within Note for more details.
-    struct PartInfo {
-        // SwiftProtobuf.Message conformance is added in an extension below. See the
-        // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-        // methods supported on all messages.
-
-        /// The part index.
-        var part: Int32 = 0
-
-        /// The name of the part. Examples: "Piano" or "Voice".
-        var name: String = String()
-
-        var unknownFields = SwiftProtobuf.UnknownStorage()
-
-        init() {}
-    }
-
-    /// Stores information about an instrument name
-    /// See usage within Note for more details.
-    struct InstrumentInfo {
-        // SwiftProtobuf.Message conformance is added in an extension below. See the
-        // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-        // methods supported on all messages.
-
-        /// The instrument index.
-        var instrument: Int32 = 0
-
-        /// The name of the instrument. Examples: "Piano" or "bass".
-        var name: String = String()
-
-        var unknownFields = SwiftProtobuf.UnknownStorage()
-
-        init() {}
-    }
-
-    /// Stores source-related information.
-    struct SourceInfo {
-        // SwiftProtobuf.Message conformance is added in an extension below. See the
-        // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-        // methods supported on all messages.
-
-        /// The type of source, if it was score-based or performance-based.
-        var sourceType: Tensorflow_Magenta_NoteSequence.SourceInfo.SourceType = .unknownSourceType
-
-        /// The encoding type used in the source file.
-        var encodingType: Tensorflow_Magenta_NoteSequence.SourceInfo.EncodingType = .unknownEncodingType
-
-        /// That parser that was used to parse the source file.
-        var parser: Tensorflow_Magenta_NoteSequence.SourceInfo.Parser = .unknownParser
-
-        var unknownFields = SwiftProtobuf.UnknownStorage()
-
-        /// The type of source that was encoded in the original file.
-        enum SourceType: SwiftProtobuf.Enum {
-            typealias RawValue = Int
-            case unknownSourceType // = 0
-
-            /// If the source was some kind of score (e.g., MusicXML, ABC, etc.).
-            /// We can expect perfect timing alignment with measures and complete
-            /// TimeSignature and KeySignature information.
-            case scoreBased // = 1
-            case performanceBased // = 2
-            case UNRECOGNIZED(Int)
-
-            init() {
-                self = .unknownSourceType
-            }
-
-            init?(rawValue: Int) {
-                switch rawValue {
-                case 0: self = .unknownSourceType
-                case 1: self = .scoreBased
-                case 2: self = .performanceBased
-                default: self = .UNRECOGNIZED(rawValue)
-                }
-            }
-
-            var rawValue: Int {
-                switch self {
-                case .unknownSourceType: return 0
-                case .scoreBased: return 1
-                case .performanceBased: return 2
-                case let .UNRECOGNIZED(i): return i
-                }
-            }
-        }
-
-        /// Enum for all encoding types, both score_based and performance_based.
-        enum EncodingType: SwiftProtobuf.Enum {
-            typealias RawValue = Int
-            case unknownEncodingType // = 0
-            case musicXml // = 1
-            case abc // = 2
-            case midi // = 3
-            case musicnet // = 4
-            case UNRECOGNIZED(Int)
-
-            init() {
-                self = .unknownEncodingType
-            }
-
-            init?(rawValue: Int) {
-                switch rawValue {
-                case 0: self = .unknownEncodingType
-                case 1: self = .musicXml
-                case 2: self = .abc
-                case 3: self = .midi
-                case 4: self = .musicnet
-                default: self = .UNRECOGNIZED(rawValue)
-                }
-            }
-
-            var rawValue: Int {
-                switch self {
-                case .unknownEncodingType: return 0
-                case .musicXml: return 1
-                case .abc: return 2
-                case .midi: return 3
-                case .musicnet: return 4
-                case let .UNRECOGNIZED(i): return i
-                }
-            }
-        }
-
-        /// Name of parser used to parse the source file.
-        enum Parser: SwiftProtobuf.Enum {
-            typealias RawValue = Int
-            case unknownParser // = 0
-            case music21 // = 1
-            case prettyMidi // = 2
-
-            /// Magenta's built-in MusicXML parser.
-            case magentaMusicXml // = 3
-
-            /// Magenta's parser for MusicNet data.
-            case magentaMusicnet // = 4
-
-            /// Magenta's parser for ABC files.
-            case magentaAbc // = 5
-
-            /// Javascript Tonejs/MidiConvert.
-            case tonejsMidiConvert // = 6
-            case UNRECOGNIZED(Int)
-
-            init() {
-                self = .unknownParser
-            }
-
-            init?(rawValue: Int) {
-                switch rawValue {
-                case 0: self = .unknownParser
-                case 1: self = .music21
-                case 2: self = .prettyMidi
-                case 3: self = .magentaMusicXml
-                case 4: self = .magentaMusicnet
-                case 5: self = .magentaAbc
-                case 6: self = .tonejsMidiConvert
-                default: self = .UNRECOGNIZED(rawValue)
-                }
-            }
-
-            var rawValue: Int {
-                switch self {
-                case .unknownParser: return 0
-                case .music21: return 1
-                case .prettyMidi: return 2
-                case .magentaMusicXml: return 3
-                case .magentaMusicnet: return 4
-                case .magentaAbc: return 5
-                case .tonejsMidiConvert: return 6
-                case let .UNRECOGNIZED(i): return i
-                }
-            }
-        }
-
-        init() {}
-    }
-
-    /// Stores an arbitrary text annotation associated with a point in time.
-    /// Next tag: 5
-    struct TextAnnotation {
-        // SwiftProtobuf.Message conformance is added in an extension below. See the
-        // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-        // methods supported on all messages.
-
-        /// Time in seconds.
-        var time: Double = 0
-
-        /// Quantized time in steps.
-        var quantizedStep: Int64 = 0
-
-        /// Text of the annotation.
-        var text: String = String()
-
-        /// Type of the annotation, to assist with automated interpretation.
-        var annotationType: Tensorflow_Magenta_NoteSequence.TextAnnotation.TextAnnotationType = .unknown
-
-        var unknownFields = SwiftProtobuf.UnknownStorage()
-
-        enum TextAnnotationType: SwiftProtobuf.Enum {
-            typealias RawValue = Int
-
-            /// Unknown annotation type.
-            case unknown // = 0
-
-            /// Chord symbol as used in lead sheets. We treat text as the "ground
-            /// truth" format for chord symbols, as the semantic interpretation of
-            /// a chord symbol is often fuzzy. We defer this interpretation to
-            /// individual models, each of which can translate chord symbol strings
-            /// into model input in whatever way is deemed most appropriate for that
-            /// model.
-            ///
-            /// Some examples of chord symbol text we consider reasonable: 'C#', 'A7',
-            /// 'Fm7b5', 'N.C.', 'G(no3)', 'C/Bb', 'D-9(b5)', 'Gadd2', 'Abm(maj7)'.
-            case chordSymbol // = 1
-
-            /// Annotation used to indicate a "beat" within a performance. This is
-            /// useful when beat information cannot be derived from the time signature
-            /// and tempo, as is the case for live performances.
-            /// This annotation does not imply that the beat is a downbeat, and it is
-            /// undefined what kind of metrical value the beat has (e.g., quarter
-            /// note).
-            /// The text content of this annotation can be application-specific.
-            case beat // = 2
-            case UNRECOGNIZED(Int)
-
-            init() {
-                self = .unknown
-            }
-
-            init?(rawValue: Int) {
-                switch rawValue {
-                case 0: self = .unknown
-                case 1: self = .chordSymbol
-                case 2: self = .beat
-                default: self = .UNRECOGNIZED(rawValue)
-                }
-            }
-
-            var rawValue: Int {
-                switch self {
-                case .unknown: return 0
-                case .chordSymbol: return 1
-                case .beat: return 2
-                case let .UNRECOGNIZED(i): return i
-                }
-            }
-        }
-
-        init() {}
-    }
-
-    /// Information about how/if this sequence was quantized.
-    struct QuantizationInfo {
-        // SwiftProtobuf.Message conformance is added in an extension below. See the
-        // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-        // methods supported on all messages.
-
-        var resolution: Tensorflow_Magenta_NoteSequence.QuantizationInfo.OneOf_Resolution?
-
-        /// How many quantization steps per quarter note of music.
-        var stepsPerQuarter: Int32 {
-            get {
-                if case let .stepsPerQuarter(v)? = resolution { return v }
-                return 0
-            }
-            set { resolution = .stepsPerQuarter(newValue) }
-        }
-
-        /// How many quantization steps per second.
-        var stepsPerSecond: Int32 {
-            get {
-                if case let .stepsPerSecond(v)? = resolution { return v }
-                return 0
-            }
-            set { resolution = .stepsPerSecond(newValue) }
-        }
-
-        var unknownFields = SwiftProtobuf.UnknownStorage()
-
-        enum OneOf_Resolution: Equatable {
-            /// How many quantization steps per quarter note of music.
-            case stepsPerQuarter(Int32)
-            /// How many quantization steps per second.
-            case stepsPerSecond(Int32)
-
-            #if !swift(>=4.1)
-                static func == (lhs: Tensorflow_Magenta_NoteSequence.QuantizationInfo.OneOf_Resolution, rhs: Tensorflow_Magenta_NoteSequence.QuantizationInfo.OneOf_Resolution) -> Bool {
-                    switch (lhs, rhs) {
-                    case let (.stepsPerQuarter(l), .stepsPerQuarter(r)): return l == r
-                    case let (.stepsPerSecond(l), .stepsPerSecond(r)): return l == r
-                    default: return false
-                    }
-                }
-            #endif
-        }
-
-        init() {}
-    }
-
-    /// Information about the location of the sequence in a larger source sequence.
-    struct SubsequenceInfo {
-        // SwiftProtobuf.Message conformance is added in an extension below. See the
-        // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-        // methods supported on all messages.
-
-        /// Time in seconds from the start of the source sequence to the start of
-        /// this sequence.
-        var startTimeOffset: Double = 0
-
-        /// Time in seconds from the end of this sequence to the end of the source
-        /// sequence.
-        var endTimeOffset: Double = 0
-
-        var unknownFields = SwiftProtobuf.UnknownStorage()
-
-        init() {}
-    }
-
-    /// Information about a section within a piece.
-    /// A section is considered to be active from its indicated time until either a
-    /// new section is defined or the end of the piece is reached.
-    struct SectionAnnotation {
-        // SwiftProtobuf.Message conformance is added in an extension below. See the
-        // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-        // methods supported on all messages.
-
-        /// Time in seconds.
-        var time: Double = 0
-
-        /// The id of the section.
-        /// Section ids must be unique within a piece.
-        var sectionID: Int64 = 0
-
-        var unknownFields = SwiftProtobuf.UnknownStorage()
-
-        init() {}
-    }
-
-    /// A section.
-    /// Either a section_id, which references a SectionAnnotation or a nested
-    /// SectionGroup.
-    struct Section {
-        // SwiftProtobuf.Message conformance is added in an extension below. See the
-        // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-        // methods supported on all messages.
-
-        var sectionType: Tensorflow_Magenta_NoteSequence.Section.OneOf_SectionType?
-
-        var sectionID: Int64 {
-            get {
-                if case let .sectionID(v)? = sectionType { return v }
-                return 0
-            }
-            set { sectionType = .sectionID(newValue) }
-        }
-
-        var sectionGroup: Tensorflow_Magenta_NoteSequence.SectionGroup {
-            get {
-                if case let .sectionGroup(v)? = sectionType { return v }
-                return Tensorflow_Magenta_NoteSequence.SectionGroup()
-            }
-            set { sectionType = .sectionGroup(newValue) }
-        }
-
-        var unknownFields = SwiftProtobuf.UnknownStorage()
-
-        enum OneOf_SectionType: Equatable {
-            case sectionID(Int64)
-            case sectionGroup(Tensorflow_Magenta_NoteSequence.SectionGroup)
-
-            #if !swift(>=4.1)
-                static func == (lhs: Tensorflow_Magenta_NoteSequence.Section.OneOf_SectionType, rhs: Tensorflow_Magenta_NoteSequence.Section.OneOf_SectionType) -> Bool {
-                    switch (lhs, rhs) {
-                    case let (.sectionID(l), .sectionID(r)): return l == r
-                    case let (.sectionGroup(l), .sectionGroup(r)): return l == r
-                    default: return false
-                    }
-                }
-            #endif
-        }
-
-        init() {}
-    }
-
-    /// A group of sections and an indication of how many times to play them.
-    /// Note that a SectionGroup may contain nested SectionGroups. This is to
-    /// capture some of the more complex structure in ABC files with part
-    /// directives like P:((AB)3(CD)3)2.
-    struct SectionGroup {
-        // SwiftProtobuf.Message conformance is added in an extension below. See the
-        // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-        // methods supported on all messages.
-
-        var sections: [Tensorflow_Magenta_NoteSequence.Section] = []
-
-        var numTimes: Int32 = 0
-
-        var unknownFields = SwiftProtobuf.UnknownStorage()
-
-        init() {}
+      #endif
     }
 
     init() {}
+  }
 
-    fileprivate var _storage = _StorageClass.defaultInstance
+  /// Information about the location of the sequence in a larger source sequence.
+  struct SubsequenceInfo {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    /// Time in seconds from the start of the source sequence to the start of
+    /// this sequence.
+    var startTimeOffset: Double = 0
+
+    /// Time in seconds from the end of this sequence to the end of the source
+    /// sequence.
+    var endTimeOffset: Double = 0
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    init() {}
+  }
+
+  /// Information about a section within a piece.
+  /// A section is considered to be active from its indicated time until either a
+  /// new section is defined or the end of the piece is reached.
+  struct SectionAnnotation {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    /// Time in seconds.
+    var time: Double = 0
+
+    /// The id of the section.
+    /// Section ids must be unique within a piece.
+    var sectionID: Int64 = 0
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    init() {}
+  }
+
+  /// A section.
+  /// Either a section_id, which references a SectionAnnotation or a nested
+  /// SectionGroup.
+  struct Section {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    var sectionType: Tensorflow_Magenta_NoteSequence.Section.OneOf_SectionType?
+
+    var sectionID: Int64 {
+      get {
+        if case let .sectionID(v)? = sectionType { return v }
+        return 0
+      }
+      set { sectionType = .sectionID(newValue) }
+    }
+
+    var sectionGroup: Tensorflow_Magenta_NoteSequence.SectionGroup {
+      get {
+        if case let .sectionGroup(v)? = sectionType { return v }
+        return Tensorflow_Magenta_NoteSequence.SectionGroup()
+      }
+      set { sectionType = .sectionGroup(newValue) }
+    }
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    enum OneOf_SectionType: Equatable {
+      case sectionID(Int64)
+      case sectionGroup(Tensorflow_Magenta_NoteSequence.SectionGroup)
+
+      #if !swift(>=4.1)
+        static func == (
+          lhs: Tensorflow_Magenta_NoteSequence.Section.OneOf_SectionType,
+          rhs: Tensorflow_Magenta_NoteSequence.Section.OneOf_SectionType
+        ) -> Bool {
+          switch (lhs, rhs) {
+          case let (.sectionID(l), .sectionID(r)): return l == r
+          case let (.sectionGroup(l), .sectionGroup(r)): return l == r
+          default: return false
+          }
+        }
+      #endif
+    }
+
+    init() {}
+  }
+
+  /// A group of sections and an indication of how many times to play them.
+  /// Note that a SectionGroup may contain nested SectionGroups. This is to
+  /// capture some of the more complex structure in ABC files with part
+  /// directives like P:((AB)3(CD)3)2.
+  struct SectionGroup {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    var sections: [Tensorflow_Magenta_NoteSequence.Section] = []
+
+    var numTimes: Int32 = 0
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    init() {}
+  }
+
+  init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
 }
 
 #if swift(>=4.2)
 
-    extension Tensorflow_Magenta_NoteSequence.PitchName: CaseIterable {
-        // The compiler won't synthesize support with the UNRECOGNIZED case.
-        static var allCases: [Tensorflow_Magenta_NoteSequence.PitchName] = [
-            .unknownPitchName,
-            .fFlatFlat,
-            .cFlatFlat,
-            .gFlatFlat,
-            .dFlatFlat,
-            .aFlatFlat,
-            .eFlatFlat,
-            .bFlatFlat,
-            .fFlat,
-            .cFlat,
-            .gFlat,
-            .dFlat,
-            .aFlat,
-            .eFlat,
-            .bFlat,
-            .f,
-            .c,
-            .g,
-            .d,
-            .a,
-            .e,
-            .b,
-            .fSharp,
-            .cSharp,
-            .gSharp,
-            .dSharp,
-            .aSharp,
-            .eSharp,
-            .bSharp,
-            .fSharpSharp,
-            .cSharpSharp,
-            .gSharpSharp,
-            .dSharpSharp,
-            .aSharpSharp,
-            .eSharpSharp,
-            .bSharpSharp,
-        ]
-    }
+  extension Tensorflow_Magenta_NoteSequence.PitchName: CaseIterable {
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    static var allCases: [Tensorflow_Magenta_NoteSequence.PitchName] = [
+      .unknownPitchName,
+      .fFlatFlat,
+      .cFlatFlat,
+      .gFlatFlat,
+      .dFlatFlat,
+      .aFlatFlat,
+      .eFlatFlat,
+      .bFlatFlat,
+      .fFlat,
+      .cFlat,
+      .gFlat,
+      .dFlat,
+      .aFlat,
+      .eFlat,
+      .bFlat,
+      .f,
+      .c,
+      .g,
+      .d,
+      .a,
+      .e,
+      .b,
+      .fSharp,
+      .cSharp,
+      .gSharp,
+      .dSharp,
+      .aSharp,
+      .eSharp,
+      .bSharp,
+      .fSharpSharp,
+      .cSharpSharp,
+      .gSharpSharp,
+      .dSharpSharp,
+      .aSharpSharp,
+      .eSharpSharp,
+      .bSharpSharp,
+    ]
+  }
 
-    extension Tensorflow_Magenta_NoteSequence.KeySignature.Key: CaseIterable {
-        // The compiler won't synthesize support with the UNRECOGNIZED case.
-        static var allCases: [Tensorflow_Magenta_NoteSequence.KeySignature.Key] = [
-            .c,
-            .cSharp,
-            .d,
-            .dSharp,
-            .e,
-            .f,
-            .fSharp,
-            .g,
-            .gSharp,
-            .a,
-            .aSharp,
-            .b,
-        ]
-    }
+  extension Tensorflow_Magenta_NoteSequence.KeySignature.Key: CaseIterable {
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    static var allCases: [Tensorflow_Magenta_NoteSequence.KeySignature.Key] = [
+      .c,
+      .cSharp,
+      .d,
+      .dSharp,
+      .e,
+      .f,
+      .fSharp,
+      .g,
+      .gSharp,
+      .a,
+      .aSharp,
+      .b,
+    ]
+  }
 
-    extension Tensorflow_Magenta_NoteSequence.KeySignature.Mode: CaseIterable {
-        // The compiler won't synthesize support with the UNRECOGNIZED case.
-        static var allCases: [Tensorflow_Magenta_NoteSequence.KeySignature.Mode] = [
-            .major,
-            .minor,
-            .notSpecified,
-            .mixolydian,
-            .dorian,
-            .phrygian,
-            .lydian,
-            .locrian,
-        ]
-    }
+  extension Tensorflow_Magenta_NoteSequence.KeySignature.Mode: CaseIterable {
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    static var allCases: [Tensorflow_Magenta_NoteSequence.KeySignature.Mode] = [
+      .major,
+      .minor,
+      .notSpecified,
+      .mixolydian,
+      .dorian,
+      .phrygian,
+      .lydian,
+      .locrian,
+    ]
+  }
 
-    extension Tensorflow_Magenta_NoteSequence.SourceInfo.SourceType: CaseIterable {
-        // The compiler won't synthesize support with the UNRECOGNIZED case.
-        static var allCases: [Tensorflow_Magenta_NoteSequence.SourceInfo.SourceType] = [
-            .unknownSourceType,
-            .scoreBased,
-            .performanceBased,
-        ]
-    }
+  extension Tensorflow_Magenta_NoteSequence.SourceInfo.SourceType: CaseIterable {
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    static var allCases: [Tensorflow_Magenta_NoteSequence.SourceInfo.SourceType] = [
+      .unknownSourceType,
+      .scoreBased,
+      .performanceBased,
+    ]
+  }
 
-    extension Tensorflow_Magenta_NoteSequence.SourceInfo.EncodingType: CaseIterable {
-        // The compiler won't synthesize support with the UNRECOGNIZED case.
-        static var allCases: [Tensorflow_Magenta_NoteSequence.SourceInfo.EncodingType] = [
-            .unknownEncodingType,
-            .musicXml,
-            .abc,
-            .midi,
-            .musicnet,
-        ]
-    }
+  extension Tensorflow_Magenta_NoteSequence.SourceInfo.EncodingType: CaseIterable {
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    static var allCases: [Tensorflow_Magenta_NoteSequence.SourceInfo.EncodingType] = [
+      .unknownEncodingType,
+      .musicXml,
+      .abc,
+      .midi,
+      .musicnet,
+    ]
+  }
 
-    extension Tensorflow_Magenta_NoteSequence.SourceInfo.Parser: CaseIterable {
-        // The compiler won't synthesize support with the UNRECOGNIZED case.
-        static var allCases: [Tensorflow_Magenta_NoteSequence.SourceInfo.Parser] = [
-            .unknownParser,
-            .music21,
-            .prettyMidi,
-            .magentaMusicXml,
-            .magentaMusicnet,
-            .magentaAbc,
-            .tonejsMidiConvert,
-        ]
-    }
+  extension Tensorflow_Magenta_NoteSequence.SourceInfo.Parser: CaseIterable {
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    static var allCases: [Tensorflow_Magenta_NoteSequence.SourceInfo.Parser] = [
+      .unknownParser,
+      .music21,
+      .prettyMidi,
+      .magentaMusicXml,
+      .magentaMusicnet,
+      .magentaAbc,
+      .tonejsMidiConvert,
+    ]
+  }
 
-    extension Tensorflow_Magenta_NoteSequence.TextAnnotation.TextAnnotationType: CaseIterable {
-        // The compiler won't synthesize support with the UNRECOGNIZED case.
-        static var allCases: [Tensorflow_Magenta_NoteSequence.TextAnnotation.TextAnnotationType] = [
-            .unknown,
-            .chordSymbol,
-            .beat,
-        ]
-    }
+  extension Tensorflow_Magenta_NoteSequence.TextAnnotation.TextAnnotationType: CaseIterable {
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    static var allCases: [Tensorflow_Magenta_NoteSequence.TextAnnotation.TextAnnotationType] = [
+      .unknown,
+      .chordSymbol,
+      .beat,
+    ]
+  }
 
-#endif // swift(>=4.2)
+#endif  // swift(>=4.2)
 
 /// Stores metadata associated with a sequence.
 struct Tensorflow_Magenta_SequenceMetadata {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
 
-    /// Title of the piece.
-    var title: String = String()
+  /// Title of the piece.
+  var title: String = String()
 
-    /// Primary artist of the sequence.
-    var artist: String = String()
+  /// Primary artist of the sequence.
+  var artist: String = String()
 
-    /// Genre(s) of the sequence.
-    var genre: [String] = []
+  /// Genre(s) of the sequence.
+  var genre: [String] = []
 
-    /// Composer of the sequece. Some pieces have multiple composers.
-    var composers: [String] = []
+  /// Composer of the sequece. Some pieces have multiple composers.
+  var composers: [String] = []
 
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    init() {}
+  init() {}
 }
 
 /// Stores an inclusive range of velocities.
 struct Tensorflow_Magenta_VelocityRange {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
 
-    var min: Int32 = 0
+  var min: Int32 = 0
 
-    var max: Int32 = 0
+  var max: Int32 = 0
 
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    init() {}
+  init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 private let _protobuf_package = "tensorflow.magenta"
 
-extension Tensorflow_Magenta_NoteSequence: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".NoteSequence"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .same(proto: "id"),
-        2: .same(proto: "filename"),
-        18: .standard(proto: "reference_number"),
-        3: .standard(proto: "collection_name"),
-        4: .standard(proto: "ticks_per_quarter"),
-        5: .standard(proto: "time_signatures"),
-        6: .standard(proto: "key_signatures"),
-        7: .same(proto: "tempos"),
-        8: .same(proto: "notes"),
-        9: .standard(proto: "total_time"),
-        16: .standard(proto: "total_quantized_steps"),
-        10: .standard(proto: "pitch_bends"),
-        11: .standard(proto: "control_changes"),
-        12: .standard(proto: "part_infos"),
-        13: .standard(proto: "source_info"),
-        14: .standard(proto: "text_annotations"),
-        20: .standard(proto: "section_annotations"),
-        21: .standard(proto: "section_groups"),
-        15: .standard(proto: "quantization_info"),
-        17: .standard(proto: "subsequence_info"),
-        19: .standard(proto: "sequence_metadata"),
-        23: .standard(proto: "instrument_infos"),
-    ]
+extension Tensorflow_Magenta_NoteSequence: SwiftProtobuf.Message, SwiftProtobuf
+    ._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding
+{
+  static let protoMessageName: String = _protobuf_package + ".NoteSequence"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "id"),
+    2: .same(proto: "filename"),
+    18: .standard(proto: "reference_number"),
+    3: .standard(proto: "collection_name"),
+    4: .standard(proto: "ticks_per_quarter"),
+    5: .standard(proto: "time_signatures"),
+    6: .standard(proto: "key_signatures"),
+    7: .same(proto: "tempos"),
+    8: .same(proto: "notes"),
+    9: .standard(proto: "total_time"),
+    16: .standard(proto: "total_quantized_steps"),
+    10: .standard(proto: "pitch_bends"),
+    11: .standard(proto: "control_changes"),
+    12: .standard(proto: "part_infos"),
+    13: .standard(proto: "source_info"),
+    14: .standard(proto: "text_annotations"),
+    20: .standard(proto: "section_annotations"),
+    21: .standard(proto: "section_groups"),
+    15: .standard(proto: "quantization_info"),
+    17: .standard(proto: "subsequence_info"),
+    19: .standard(proto: "sequence_metadata"),
+    23: .standard(proto: "instrument_infos"),
+  ]
 
-    fileprivate class _StorageClass {
-        var _id: String = String()
-        var _filename: String = String()
-        var _referenceNumber: Int64 = 0
-        var _collectionName: String = String()
-        var _ticksPerQuarter: Int32 = 0
-        var _timeSignatures: [Tensorflow_Magenta_NoteSequence.TimeSignature] = []
-        var _keySignatures: [Tensorflow_Magenta_NoteSequence.KeySignature] = []
-        var _tempos: [Tensorflow_Magenta_NoteSequence.Tempo] = []
-        var _notes: [Tensorflow_Magenta_NoteSequence.Note] = []
-        var _totalTime: Double = 0
-        var _totalQuantizedSteps: Int64 = 0
-        var _pitchBends: [Tensorflow_Magenta_NoteSequence.PitchBend] = []
-        var _controlChanges: [Tensorflow_Magenta_NoteSequence.ControlChange] = []
-        var _partInfos: [Tensorflow_Magenta_NoteSequence.PartInfo] = []
-        var _sourceInfo: Tensorflow_Magenta_NoteSequence.SourceInfo?
-        var _textAnnotations: [Tensorflow_Magenta_NoteSequence.TextAnnotation] = []
-        var _sectionAnnotations: [Tensorflow_Magenta_NoteSequence.SectionAnnotation] = []
-        var _sectionGroups: [Tensorflow_Magenta_NoteSequence.SectionGroup] = []
-        var _quantizationInfo: Tensorflow_Magenta_NoteSequence.QuantizationInfo?
-        var _subsequenceInfo: Tensorflow_Magenta_NoteSequence.SubsequenceInfo?
-        var _sequenceMetadata: Tensorflow_Magenta_SequenceMetadata?
-        var _instrumentInfos: [Tensorflow_Magenta_NoteSequence.InstrumentInfo] = []
+  fileprivate class _StorageClass {
+    var _id: String = String()
+    var _filename: String = String()
+    var _referenceNumber: Int64 = 0
+    var _collectionName: String = String()
+    var _ticksPerQuarter: Int32 = 0
+    var _timeSignatures: [Tensorflow_Magenta_NoteSequence.TimeSignature] = []
+    var _keySignatures: [Tensorflow_Magenta_NoteSequence.KeySignature] = []
+    var _tempos: [Tensorflow_Magenta_NoteSequence.Tempo] = []
+    var _notes: [Tensorflow_Magenta_NoteSequence.Note] = []
+    var _totalTime: Double = 0
+    var _totalQuantizedSteps: Int64 = 0
+    var _pitchBends: [Tensorflow_Magenta_NoteSequence.PitchBend] = []
+    var _controlChanges: [Tensorflow_Magenta_NoteSequence.ControlChange] = []
+    var _partInfos: [Tensorflow_Magenta_NoteSequence.PartInfo] = []
+    var _sourceInfo: Tensorflow_Magenta_NoteSequence.SourceInfo?
+    var _textAnnotations: [Tensorflow_Magenta_NoteSequence.TextAnnotation] = []
+    var _sectionAnnotations: [Tensorflow_Magenta_NoteSequence.SectionAnnotation] = []
+    var _sectionGroups: [Tensorflow_Magenta_NoteSequence.SectionGroup] = []
+    var _quantizationInfo: Tensorflow_Magenta_NoteSequence.QuantizationInfo?
+    var _subsequenceInfo: Tensorflow_Magenta_NoteSequence.SubsequenceInfo?
+    var _sequenceMetadata: Tensorflow_Magenta_SequenceMetadata?
+    var _instrumentInfos: [Tensorflow_Magenta_NoteSequence.InstrumentInfo] = []
 
-        static let defaultInstance = _StorageClass()
+    static let defaultInstance = _StorageClass()
 
-        private init() {}
+    private init() {}
 
-        init(copying source: _StorageClass) {
-            _id = source._id
-            _filename = source._filename
-            _referenceNumber = source._referenceNumber
-            _collectionName = source._collectionName
-            _ticksPerQuarter = source._ticksPerQuarter
-            _timeSignatures = source._timeSignatures
-            _keySignatures = source._keySignatures
-            _tempos = source._tempos
-            _notes = source._notes
-            _totalTime = source._totalTime
-            _totalQuantizedSteps = source._totalQuantizedSteps
-            _pitchBends = source._pitchBends
-            _controlChanges = source._controlChanges
-            _partInfos = source._partInfos
-            _sourceInfo = source._sourceInfo
-            _textAnnotations = source._textAnnotations
-            _sectionAnnotations = source._sectionAnnotations
-            _sectionGroups = source._sectionGroups
-            _quantizationInfo = source._quantizationInfo
-            _subsequenceInfo = source._subsequenceInfo
-            _sequenceMetadata = source._sequenceMetadata
-            _instrumentInfos = source._instrumentInfos
-        }
+    init(copying source: _StorageClass) {
+      _id = source._id
+      _filename = source._filename
+      _referenceNumber = source._referenceNumber
+      _collectionName = source._collectionName
+      _ticksPerQuarter = source._ticksPerQuarter
+      _timeSignatures = source._timeSignatures
+      _keySignatures = source._keySignatures
+      _tempos = source._tempos
+      _notes = source._notes
+      _totalTime = source._totalTime
+      _totalQuantizedSteps = source._totalQuantizedSteps
+      _pitchBends = source._pitchBends
+      _controlChanges = source._controlChanges
+      _partInfos = source._partInfos
+      _sourceInfo = source._sourceInfo
+      _textAnnotations = source._textAnnotations
+      _sectionAnnotations = source._sectionAnnotations
+      _sectionGroups = source._sectionGroups
+      _quantizationInfo = source._quantizationInfo
+      _subsequenceInfo = source._subsequenceInfo
+      _sequenceMetadata = source._sequenceMetadata
+      _instrumentInfos = source._instrumentInfos
     }
+  }
 
-    fileprivate mutating func _uniqueStorage() -> _StorageClass {
-        if !isKnownUniquelyReferenced(&_storage) {
-            _storage = _StorageClass(copying: _storage)
-        }
-        return _storage
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
     }
+    return _storage
+  }
 
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        _ = _uniqueStorage()
-        try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-            while let fieldNumber = try decoder.nextFieldNumber() {
-                switch fieldNumber {
-                case 1: try decoder.decodeSingularStringField(value: &_storage._id)
-                case 2: try decoder.decodeSingularStringField(value: &_storage._filename)
-                case 3: try decoder.decodeSingularStringField(value: &_storage._collectionName)
-                case 4: try decoder.decodeSingularInt32Field(value: &_storage._ticksPerQuarter)
-                case 5: try decoder.decodeRepeatedMessageField(value: &_storage._timeSignatures)
-                case 6: try decoder.decodeRepeatedMessageField(value: &_storage._keySignatures)
-                case 7: try decoder.decodeRepeatedMessageField(value: &_storage._tempos)
-                case 8: try decoder.decodeRepeatedMessageField(value: &_storage._notes)
-                case 9: try decoder.decodeSingularDoubleField(value: &_storage._totalTime)
-                case 10: try decoder.decodeRepeatedMessageField(value: &_storage._pitchBends)
-                case 11: try decoder.decodeRepeatedMessageField(value: &_storage._controlChanges)
-                case 12: try decoder.decodeRepeatedMessageField(value: &_storage._partInfos)
-                case 13: try decoder.decodeSingularMessageField(value: &_storage._sourceInfo)
-                case 14: try decoder.decodeRepeatedMessageField(value: &_storage._textAnnotations)
-                case 15: try decoder.decodeSingularMessageField(value: &_storage._quantizationInfo)
-                case 16: try decoder.decodeSingularInt64Field(value: &_storage._totalQuantizedSteps)
-                case 17: try decoder.decodeSingularMessageField(value: &_storage._subsequenceInfo)
-                case 18: try decoder.decodeSingularInt64Field(value: &_storage._referenceNumber)
-                case 19: try decoder.decodeSingularMessageField(value: &_storage._sequenceMetadata)
-                case 20: try decoder.decodeRepeatedMessageField(value: &_storage._sectionAnnotations)
-                case 21: try decoder.decodeRepeatedMessageField(value: &_storage._sectionGroups)
-                case 23: try decoder.decodeRepeatedMessageField(value: &_storage._instrumentInfos)
-                default: break
-                }
-            }
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularStringField(value: &_storage._id)
+        case 2: try decoder.decodeSingularStringField(value: &_storage._filename)
+        case 3: try decoder.decodeSingularStringField(value: &_storage._collectionName)
+        case 4: try decoder.decodeSingularInt32Field(value: &_storage._ticksPerQuarter)
+        case 5: try decoder.decodeRepeatedMessageField(value: &_storage._timeSignatures)
+        case 6: try decoder.decodeRepeatedMessageField(value: &_storage._keySignatures)
+        case 7: try decoder.decodeRepeatedMessageField(value: &_storage._tempos)
+        case 8: try decoder.decodeRepeatedMessageField(value: &_storage._notes)
+        case 9: try decoder.decodeSingularDoubleField(value: &_storage._totalTime)
+        case 10: try decoder.decodeRepeatedMessageField(value: &_storage._pitchBends)
+        case 11: try decoder.decodeRepeatedMessageField(value: &_storage._controlChanges)
+        case 12: try decoder.decodeRepeatedMessageField(value: &_storage._partInfos)
+        case 13: try decoder.decodeSingularMessageField(value: &_storage._sourceInfo)
+        case 14: try decoder.decodeRepeatedMessageField(value: &_storage._textAnnotations)
+        case 15: try decoder.decodeSingularMessageField(value: &_storage._quantizationInfo)
+        case 16: try decoder.decodeSingularInt64Field(value: &_storage._totalQuantizedSteps)
+        case 17: try decoder.decodeSingularMessageField(value: &_storage._subsequenceInfo)
+        case 18: try decoder.decodeSingularInt64Field(value: &_storage._referenceNumber)
+        case 19: try decoder.decodeSingularMessageField(value: &_storage._sequenceMetadata)
+        case 20: try decoder.decodeRepeatedMessageField(value: &_storage._sectionAnnotations)
+        case 21: try decoder.decodeRepeatedMessageField(value: &_storage._sectionGroups)
+        case 23: try decoder.decodeRepeatedMessageField(value: &_storage._instrumentInfos)
+        default: break
         }
+      }
     }
+  }
 
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-            if !_storage._id.isEmpty {
-                try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 1)
-            }
-            if !_storage._filename.isEmpty {
-                try visitor.visitSingularStringField(value: _storage._filename, fieldNumber: 2)
-            }
-            if !_storage._collectionName.isEmpty {
-                try visitor.visitSingularStringField(value: _storage._collectionName, fieldNumber: 3)
-            }
-            if _storage._ticksPerQuarter != 0 {
-                try visitor.visitSingularInt32Field(value: _storage._ticksPerQuarter, fieldNumber: 4)
-            }
-            if !_storage._timeSignatures.isEmpty {
-                try visitor.visitRepeatedMessageField(value: _storage._timeSignatures, fieldNumber: 5)
-            }
-            if !_storage._keySignatures.isEmpty {
-                try visitor.visitRepeatedMessageField(value: _storage._keySignatures, fieldNumber: 6)
-            }
-            if !_storage._tempos.isEmpty {
-                try visitor.visitRepeatedMessageField(value: _storage._tempos, fieldNumber: 7)
-            }
-            if !_storage._notes.isEmpty {
-                try visitor.visitRepeatedMessageField(value: _storage._notes, fieldNumber: 8)
-            }
-            if _storage._totalTime != 0 {
-                try visitor.visitSingularDoubleField(value: _storage._totalTime, fieldNumber: 9)
-            }
-            if !_storage._pitchBends.isEmpty {
-                try visitor.visitRepeatedMessageField(value: _storage._pitchBends, fieldNumber: 10)
-            }
-            if !_storage._controlChanges.isEmpty {
-                try visitor.visitRepeatedMessageField(value: _storage._controlChanges, fieldNumber: 11)
-            }
-            if !_storage._partInfos.isEmpty {
-                try visitor.visitRepeatedMessageField(value: _storage._partInfos, fieldNumber: 12)
-            }
-            if let v = _storage._sourceInfo {
-                try visitor.visitSingularMessageField(value: v, fieldNumber: 13)
-            }
-            if !_storage._textAnnotations.isEmpty {
-                try visitor.visitRepeatedMessageField(value: _storage._textAnnotations, fieldNumber: 14)
-            }
-            if let v = _storage._quantizationInfo {
-                try visitor.visitSingularMessageField(value: v, fieldNumber: 15)
-            }
-            if _storage._totalQuantizedSteps != 0 {
-                try visitor.visitSingularInt64Field(value: _storage._totalQuantizedSteps, fieldNumber: 16)
-            }
-            if let v = _storage._subsequenceInfo {
-                try visitor.visitSingularMessageField(value: v, fieldNumber: 17)
-            }
-            if _storage._referenceNumber != 0 {
-                try visitor.visitSingularInt64Field(value: _storage._referenceNumber, fieldNumber: 18)
-            }
-            if let v = _storage._sequenceMetadata {
-                try visitor.visitSingularMessageField(value: v, fieldNumber: 19)
-            }
-            if !_storage._sectionAnnotations.isEmpty {
-                try visitor.visitRepeatedMessageField(value: _storage._sectionAnnotations, fieldNumber: 20)
-            }
-            if !_storage._sectionGroups.isEmpty {
-                try visitor.visitRepeatedMessageField(value: _storage._sectionGroups, fieldNumber: 21)
-            }
-            if !_storage._instrumentInfos.isEmpty {
-                try visitor.visitRepeatedMessageField(value: _storage._instrumentInfos, fieldNumber: 23)
-            }
-        }
-        try unknownFields.traverse(visitor: &visitor)
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if !_storage._id.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 1)
+      }
+      if !_storage._filename.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._filename, fieldNumber: 2)
+      }
+      if !_storage._collectionName.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._collectionName, fieldNumber: 3)
+      }
+      if _storage._ticksPerQuarter != 0 {
+        try visitor.visitSingularInt32Field(value: _storage._ticksPerQuarter, fieldNumber: 4)
+      }
+      if !_storage._timeSignatures.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._timeSignatures, fieldNumber: 5)
+      }
+      if !_storage._keySignatures.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._keySignatures, fieldNumber: 6)
+      }
+      if !_storage._tempos.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._tempos, fieldNumber: 7)
+      }
+      if !_storage._notes.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._notes, fieldNumber: 8)
+      }
+      if _storage._totalTime != 0 {
+        try visitor.visitSingularDoubleField(value: _storage._totalTime, fieldNumber: 9)
+      }
+      if !_storage._pitchBends.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._pitchBends, fieldNumber: 10)
+      }
+      if !_storage._controlChanges.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._controlChanges, fieldNumber: 11)
+      }
+      if !_storage._partInfos.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._partInfos, fieldNumber: 12)
+      }
+      if let v = _storage._sourceInfo {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 13)
+      }
+      if !_storage._textAnnotations.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._textAnnotations, fieldNumber: 14)
+      }
+      if let v = _storage._quantizationInfo {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 15)
+      }
+      if _storage._totalQuantizedSteps != 0 {
+        try visitor.visitSingularInt64Field(value: _storage._totalQuantizedSteps, fieldNumber: 16)
+      }
+      if let v = _storage._subsequenceInfo {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 17)
+      }
+      if _storage._referenceNumber != 0 {
+        try visitor.visitSingularInt64Field(value: _storage._referenceNumber, fieldNumber: 18)
+      }
+      if let v = _storage._sequenceMetadata {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 19)
+      }
+      if !_storage._sectionAnnotations.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._sectionAnnotations, fieldNumber: 20)
+      }
+      if !_storage._sectionGroups.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._sectionGroups, fieldNumber: 21)
+      }
+      if !_storage._instrumentInfos.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._instrumentInfos, fieldNumber: 23)
+      }
     }
+    try unknownFields.traverse(visitor: &visitor)
+  }
 
-    static func == (lhs: Tensorflow_Magenta_NoteSequence, rhs: Tensorflow_Magenta_NoteSequence) -> Bool {
-        if lhs._storage !== rhs._storage {
-            let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
-                let _storage = _args.0
-                let rhs_storage = _args.1
-                if _storage._id != rhs_storage._id { return false }
-                if _storage._filename != rhs_storage._filename { return false }
-                if _storage._referenceNumber != rhs_storage._referenceNumber { return false }
-                if _storage._collectionName != rhs_storage._collectionName { return false }
-                if _storage._ticksPerQuarter != rhs_storage._ticksPerQuarter { return false }
-                if _storage._timeSignatures != rhs_storage._timeSignatures { return false }
-                if _storage._keySignatures != rhs_storage._keySignatures { return false }
-                if _storage._tempos != rhs_storage._tempos { return false }
-                if _storage._notes != rhs_storage._notes { return false }
-                if _storage._totalTime != rhs_storage._totalTime { return false }
-                if _storage._totalQuantizedSteps != rhs_storage._totalQuantizedSteps { return false }
-                if _storage._pitchBends != rhs_storage._pitchBends { return false }
-                if _storage._controlChanges != rhs_storage._controlChanges { return false }
-                if _storage._partInfos != rhs_storage._partInfos { return false }
-                if _storage._sourceInfo != rhs_storage._sourceInfo { return false }
-                if _storage._textAnnotations != rhs_storage._textAnnotations { return false }
-                if _storage._sectionAnnotations != rhs_storage._sectionAnnotations { return false }
-                if _storage._sectionGroups != rhs_storage._sectionGroups { return false }
-                if _storage._quantizationInfo != rhs_storage._quantizationInfo { return false }
-                if _storage._subsequenceInfo != rhs_storage._subsequenceInfo { return false }
-                if _storage._sequenceMetadata != rhs_storage._sequenceMetadata { return false }
-                if _storage._instrumentInfos != rhs_storage._instrumentInfos { return false }
-                return true
-            }
-            if !storagesAreEqual { return false }
-        }
-        if lhs.unknownFields != rhs.unknownFields { return false }
+  static func == (lhs: Tensorflow_Magenta_NoteSequence, rhs: Tensorflow_Magenta_NoteSequence)
+    -> Bool
+  {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) {
+        (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._id != rhs_storage._id { return false }
+        if _storage._filename != rhs_storage._filename { return false }
+        if _storage._referenceNumber != rhs_storage._referenceNumber { return false }
+        if _storage._collectionName != rhs_storage._collectionName { return false }
+        if _storage._ticksPerQuarter != rhs_storage._ticksPerQuarter { return false }
+        if _storage._timeSignatures != rhs_storage._timeSignatures { return false }
+        if _storage._keySignatures != rhs_storage._keySignatures { return false }
+        if _storage._tempos != rhs_storage._tempos { return false }
+        if _storage._notes != rhs_storage._notes { return false }
+        if _storage._totalTime != rhs_storage._totalTime { return false }
+        if _storage._totalQuantizedSteps != rhs_storage._totalQuantizedSteps { return false }
+        if _storage._pitchBends != rhs_storage._pitchBends { return false }
+        if _storage._controlChanges != rhs_storage._controlChanges { return false }
+        if _storage._partInfos != rhs_storage._partInfos { return false }
+        if _storage._sourceInfo != rhs_storage._sourceInfo { return false }
+        if _storage._textAnnotations != rhs_storage._textAnnotations { return false }
+        if _storage._sectionAnnotations != rhs_storage._sectionAnnotations { return false }
+        if _storage._sectionGroups != rhs_storage._sectionGroups { return false }
+        if _storage._quantizationInfo != rhs_storage._quantizationInfo { return false }
+        if _storage._subsequenceInfo != rhs_storage._subsequenceInfo { return false }
+        if _storage._sequenceMetadata != rhs_storage._sequenceMetadata { return false }
+        if _storage._instrumentInfos != rhs_storage._instrumentInfos { return false }
         return true
+      }
+      if !storagesAreEqual { return false }
     }
+    if lhs.unknownFields != rhs.unknownFields { return false }
+    return true
+  }
 }
 
 extension Tensorflow_Magenta_NoteSequence.PitchName: SwiftProtobuf._ProtoNameProviding {
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        0: .same(proto: "UNKNOWN_PITCH_NAME"),
-        1: .same(proto: "F_FLAT_FLAT"),
-        2: .same(proto: "C_FLAT_FLAT"),
-        3: .same(proto: "G_FLAT_FLAT"),
-        4: .same(proto: "D_FLAT_FLAT"),
-        5: .same(proto: "A_FLAT_FLAT"),
-        6: .same(proto: "E_FLAT_FLAT"),
-        7: .same(proto: "B_FLAT_FLAT"),
-        8: .same(proto: "F_FLAT"),
-        9: .same(proto: "C_FLAT"),
-        10: .same(proto: "G_FLAT"),
-        11: .same(proto: "D_FLAT"),
-        12: .same(proto: "A_FLAT"),
-        13: .same(proto: "E_FLAT"),
-        14: .same(proto: "B_FLAT"),
-        15: .same(proto: "F"),
-        16: .same(proto: "C"),
-        17: .same(proto: "G"),
-        18: .same(proto: "D"),
-        19: .same(proto: "A"),
-        20: .same(proto: "E"),
-        21: .same(proto: "B"),
-        22: .same(proto: "F_SHARP"),
-        23: .same(proto: "C_SHARP"),
-        24: .same(proto: "G_SHARP"),
-        25: .same(proto: "D_SHARP"),
-        26: .same(proto: "A_SHARP"),
-        27: .same(proto: "E_SHARP"),
-        28: .same(proto: "B_SHARP"),
-        29: .same(proto: "F_SHARP_SHARP"),
-        30: .same(proto: "C_SHARP_SHARP"),
-        31: .same(proto: "G_SHARP_SHARP"),
-        32: .same(proto: "D_SHARP_SHARP"),
-        33: .same(proto: "A_SHARP_SHARP"),
-        34: .same(proto: "E_SHARP_SHARP"),
-        35: .same(proto: "B_SHARP_SHARP"),
-    ]
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "UNKNOWN_PITCH_NAME"),
+    1: .same(proto: "F_FLAT_FLAT"),
+    2: .same(proto: "C_FLAT_FLAT"),
+    3: .same(proto: "G_FLAT_FLAT"),
+    4: .same(proto: "D_FLAT_FLAT"),
+    5: .same(proto: "A_FLAT_FLAT"),
+    6: .same(proto: "E_FLAT_FLAT"),
+    7: .same(proto: "B_FLAT_FLAT"),
+    8: .same(proto: "F_FLAT"),
+    9: .same(proto: "C_FLAT"),
+    10: .same(proto: "G_FLAT"),
+    11: .same(proto: "D_FLAT"),
+    12: .same(proto: "A_FLAT"),
+    13: .same(proto: "E_FLAT"),
+    14: .same(proto: "B_FLAT"),
+    15: .same(proto: "F"),
+    16: .same(proto: "C"),
+    17: .same(proto: "G"),
+    18: .same(proto: "D"),
+    19: .same(proto: "A"),
+    20: .same(proto: "E"),
+    21: .same(proto: "B"),
+    22: .same(proto: "F_SHARP"),
+    23: .same(proto: "C_SHARP"),
+    24: .same(proto: "G_SHARP"),
+    25: .same(proto: "D_SHARP"),
+    26: .same(proto: "A_SHARP"),
+    27: .same(proto: "E_SHARP"),
+    28: .same(proto: "B_SHARP"),
+    29: .same(proto: "F_SHARP_SHARP"),
+    30: .same(proto: "C_SHARP_SHARP"),
+    31: .same(proto: "G_SHARP_SHARP"),
+    32: .same(proto: "D_SHARP_SHARP"),
+    33: .same(proto: "A_SHARP_SHARP"),
+    34: .same(proto: "E_SHARP_SHARP"),
+    35: .same(proto: "B_SHARP_SHARP"),
+  ]
 }
 
-extension Tensorflow_Magenta_NoteSequence.Note: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = Tensorflow_Magenta_NoteSequence.protoMessageName + ".Note"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .same(proto: "pitch"),
-        11: .standard(proto: "pitch_name"),
-        2: .same(proto: "velocity"),
-        3: .standard(proto: "start_time"),
-        13: .standard(proto: "quantized_start_step"),
-        4: .standard(proto: "end_time"),
-        14: .standard(proto: "quantized_end_step"),
-        5: .same(proto: "numerator"),
-        6: .same(proto: "denominator"),
-        7: .same(proto: "instrument"),
-        8: .same(proto: "program"),
-        9: .standard(proto: "is_drum"),
-        10: .same(proto: "part"),
-        12: .same(proto: "voice"),
-    ]
+extension Tensorflow_Magenta_NoteSequence.Note: SwiftProtobuf.Message, SwiftProtobuf
+    ._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding
+{
+  static let protoMessageName: String = Tensorflow_Magenta_NoteSequence.protoMessageName + ".Note"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "pitch"),
+    11: .standard(proto: "pitch_name"),
+    2: .same(proto: "velocity"),
+    3: .standard(proto: "start_time"),
+    13: .standard(proto: "quantized_start_step"),
+    4: .standard(proto: "end_time"),
+    14: .standard(proto: "quantized_end_step"),
+    5: .same(proto: "numerator"),
+    6: .same(proto: "denominator"),
+    7: .same(proto: "instrument"),
+    8: .same(proto: "program"),
+    9: .standard(proto: "is_drum"),
+    10: .same(proto: "part"),
+    12: .same(proto: "voice"),
+  ]
 
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let fieldNumber = try decoder.nextFieldNumber() {
-            switch fieldNumber {
-            case 1: try decoder.decodeSingularInt32Field(value: &pitch)
-            case 2: try decoder.decodeSingularInt32Field(value: &velocity)
-            case 3: try decoder.decodeSingularDoubleField(value: &startTime)
-            case 4: try decoder.decodeSingularDoubleField(value: &endTime)
-            case 5: try decoder.decodeSingularInt32Field(value: &numerator)
-            case 6: try decoder.decodeSingularInt32Field(value: &denominator)
-            case 7: try decoder.decodeSingularInt32Field(value: &instrument)
-            case 8: try decoder.decodeSingularInt32Field(value: &program)
-            case 9: try decoder.decodeSingularBoolField(value: &isDrum)
-            case 10: try decoder.decodeSingularInt32Field(value: &part)
-            case 11: try decoder.decodeSingularEnumField(value: &pitchName)
-            case 12: try decoder.decodeSingularInt32Field(value: &voice)
-            case 13: try decoder.decodeSingularInt64Field(value: &quantizedStartStep)
-            case 14: try decoder.decodeSingularInt64Field(value: &quantizedEndStep)
-            default: break
-            }
-        }
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularInt32Field(value: &pitch)
+      case 2: try decoder.decodeSingularInt32Field(value: &velocity)
+      case 3: try decoder.decodeSingularDoubleField(value: &startTime)
+      case 4: try decoder.decodeSingularDoubleField(value: &endTime)
+      case 5: try decoder.decodeSingularInt32Field(value: &numerator)
+      case 6: try decoder.decodeSingularInt32Field(value: &denominator)
+      case 7: try decoder.decodeSingularInt32Field(value: &instrument)
+      case 8: try decoder.decodeSingularInt32Field(value: &program)
+      case 9: try decoder.decodeSingularBoolField(value: &isDrum)
+      case 10: try decoder.decodeSingularInt32Field(value: &part)
+      case 11: try decoder.decodeSingularEnumField(value: &pitchName)
+      case 12: try decoder.decodeSingularInt32Field(value: &voice)
+      case 13: try decoder.decodeSingularInt64Field(value: &quantizedStartStep)
+      case 14: try decoder.decodeSingularInt64Field(value: &quantizedEndStep)
+      default: break
+      }
     }
+  }
 
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        if pitch != 0 {
-            try visitor.visitSingularInt32Field(value: pitch, fieldNumber: 1)
-        }
-        if velocity != 0 {
-            try visitor.visitSingularInt32Field(value: velocity, fieldNumber: 2)
-        }
-        if startTime != 0 {
-            try visitor.visitSingularDoubleField(value: startTime, fieldNumber: 3)
-        }
-        if endTime != 0 {
-            try visitor.visitSingularDoubleField(value: endTime, fieldNumber: 4)
-        }
-        if numerator != 0 {
-            try visitor.visitSingularInt32Field(value: numerator, fieldNumber: 5)
-        }
-        if denominator != 0 {
-            try visitor.visitSingularInt32Field(value: denominator, fieldNumber: 6)
-        }
-        if instrument != 0 {
-            try visitor.visitSingularInt32Field(value: instrument, fieldNumber: 7)
-        }
-        if program != 0 {
-            try visitor.visitSingularInt32Field(value: program, fieldNumber: 8)
-        }
-        if isDrum != false {
-            try visitor.visitSingularBoolField(value: isDrum, fieldNumber: 9)
-        }
-        if part != 0 {
-            try visitor.visitSingularInt32Field(value: part, fieldNumber: 10)
-        }
-        if pitchName != .unknownPitchName {
-            try visitor.visitSingularEnumField(value: pitchName, fieldNumber: 11)
-        }
-        if voice != 0 {
-            try visitor.visitSingularInt32Field(value: voice, fieldNumber: 12)
-        }
-        if quantizedStartStep != 0 {
-            try visitor.visitSingularInt64Field(value: quantizedStartStep, fieldNumber: 13)
-        }
-        if quantizedEndStep != 0 {
-            try visitor.visitSingularInt64Field(value: quantizedEndStep, fieldNumber: 14)
-        }
-        try unknownFields.traverse(visitor: &visitor)
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if pitch != 0 {
+      try visitor.visitSingularInt32Field(value: pitch, fieldNumber: 1)
     }
+    if velocity != 0 {
+      try visitor.visitSingularInt32Field(value: velocity, fieldNumber: 2)
+    }
+    if startTime != 0 {
+      try visitor.visitSingularDoubleField(value: startTime, fieldNumber: 3)
+    }
+    if endTime != 0 {
+      try visitor.visitSingularDoubleField(value: endTime, fieldNumber: 4)
+    }
+    if numerator != 0 {
+      try visitor.visitSingularInt32Field(value: numerator, fieldNumber: 5)
+    }
+    if denominator != 0 {
+      try visitor.visitSingularInt32Field(value: denominator, fieldNumber: 6)
+    }
+    if instrument != 0 {
+      try visitor.visitSingularInt32Field(value: instrument, fieldNumber: 7)
+    }
+    if program != 0 {
+      try visitor.visitSingularInt32Field(value: program, fieldNumber: 8)
+    }
+    if isDrum != false {
+      try visitor.visitSingularBoolField(value: isDrum, fieldNumber: 9)
+    }
+    if part != 0 {
+      try visitor.visitSingularInt32Field(value: part, fieldNumber: 10)
+    }
+    if pitchName != .unknownPitchName {
+      try visitor.visitSingularEnumField(value: pitchName, fieldNumber: 11)
+    }
+    if voice != 0 {
+      try visitor.visitSingularInt32Field(value: voice, fieldNumber: 12)
+    }
+    if quantizedStartStep != 0 {
+      try visitor.visitSingularInt64Field(value: quantizedStartStep, fieldNumber: 13)
+    }
+    if quantizedEndStep != 0 {
+      try visitor.visitSingularInt64Field(value: quantizedEndStep, fieldNumber: 14)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
 
-    static func == (lhs: Tensorflow_Magenta_NoteSequence.Note, rhs: Tensorflow_Magenta_NoteSequence.Note) -> Bool {
-        if lhs.pitch != rhs.pitch { return false }
-        if lhs.pitchName != rhs.pitchName { return false }
-        if lhs.velocity != rhs.velocity { return false }
-        if lhs.startTime != rhs.startTime { return false }
-        if lhs.quantizedStartStep != rhs.quantizedStartStep { return false }
-        if lhs.endTime != rhs.endTime { return false }
-        if lhs.quantizedEndStep != rhs.quantizedEndStep { return false }
-        if lhs.numerator != rhs.numerator { return false }
-        if lhs.denominator != rhs.denominator { return false }
-        if lhs.instrument != rhs.instrument { return false }
-        if lhs.program != rhs.program { return false }
-        if lhs.isDrum != rhs.isDrum { return false }
-        if lhs.part != rhs.part { return false }
-        if lhs.voice != rhs.voice { return false }
-        if lhs.unknownFields != rhs.unknownFields { return false }
-        return true
-    }
+  static func == (
+    lhs: Tensorflow_Magenta_NoteSequence.Note, rhs: Tensorflow_Magenta_NoteSequence.Note
+  ) -> Bool {
+    if lhs.pitch != rhs.pitch { return false }
+    if lhs.pitchName != rhs.pitchName { return false }
+    if lhs.velocity != rhs.velocity { return false }
+    if lhs.startTime != rhs.startTime { return false }
+    if lhs.quantizedStartStep != rhs.quantizedStartStep { return false }
+    if lhs.endTime != rhs.endTime { return false }
+    if lhs.quantizedEndStep != rhs.quantizedEndStep { return false }
+    if lhs.numerator != rhs.numerator { return false }
+    if lhs.denominator != rhs.denominator { return false }
+    if lhs.instrument != rhs.instrument { return false }
+    if lhs.program != rhs.program { return false }
+    if lhs.isDrum != rhs.isDrum { return false }
+    if lhs.part != rhs.part { return false }
+    if lhs.voice != rhs.voice { return false }
+    if lhs.unknownFields != rhs.unknownFields { return false }
+    return true
+  }
 }
 
-extension Tensorflow_Magenta_NoteSequence.TimeSignature: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = Tensorflow_Magenta_NoteSequence.protoMessageName + ".TimeSignature"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .same(proto: "time"),
-        2: .same(proto: "numerator"),
-        3: .same(proto: "denominator"),
-    ]
+extension Tensorflow_Magenta_NoteSequence.TimeSignature: SwiftProtobuf.Message, SwiftProtobuf
+    ._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding
+{
+  static let protoMessageName: String =
+    Tensorflow_Magenta_NoteSequence.protoMessageName + ".TimeSignature"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "time"),
+    2: .same(proto: "numerator"),
+    3: .same(proto: "denominator"),
+  ]
 
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let fieldNumber = try decoder.nextFieldNumber() {
-            switch fieldNumber {
-            case 1: try decoder.decodeSingularDoubleField(value: &time)
-            case 2: try decoder.decodeSingularInt32Field(value: &numerator)
-            case 3: try decoder.decodeSingularInt32Field(value: &denominator)
-            default: break
-            }
-        }
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularDoubleField(value: &time)
+      case 2: try decoder.decodeSingularInt32Field(value: &numerator)
+      case 3: try decoder.decodeSingularInt32Field(value: &denominator)
+      default: break
+      }
     }
+  }
 
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        if time != 0 {
-            try visitor.visitSingularDoubleField(value: time, fieldNumber: 1)
-        }
-        if numerator != 0 {
-            try visitor.visitSingularInt32Field(value: numerator, fieldNumber: 2)
-        }
-        if denominator != 0 {
-            try visitor.visitSingularInt32Field(value: denominator, fieldNumber: 3)
-        }
-        try unknownFields.traverse(visitor: &visitor)
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if time != 0 {
+      try visitor.visitSingularDoubleField(value: time, fieldNumber: 1)
     }
+    if numerator != 0 {
+      try visitor.visitSingularInt32Field(value: numerator, fieldNumber: 2)
+    }
+    if denominator != 0 {
+      try visitor.visitSingularInt32Field(value: denominator, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
 
-    static func == (lhs: Tensorflow_Magenta_NoteSequence.TimeSignature, rhs: Tensorflow_Magenta_NoteSequence.TimeSignature) -> Bool {
-        if lhs.time != rhs.time { return false }
-        if lhs.numerator != rhs.numerator { return false }
-        if lhs.denominator != rhs.denominator { return false }
-        if lhs.unknownFields != rhs.unknownFields { return false }
-        return true
-    }
+  static func == (
+    lhs: Tensorflow_Magenta_NoteSequence.TimeSignature,
+    rhs: Tensorflow_Magenta_NoteSequence.TimeSignature
+  ) -> Bool {
+    if lhs.time != rhs.time { return false }
+    if lhs.numerator != rhs.numerator { return false }
+    if lhs.denominator != rhs.denominator { return false }
+    if lhs.unknownFields != rhs.unknownFields { return false }
+    return true
+  }
 }
 
-extension Tensorflow_Magenta_NoteSequence.KeySignature: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = Tensorflow_Magenta_NoteSequence.protoMessageName + ".KeySignature"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .same(proto: "time"),
-        2: .same(proto: "key"),
-        3: .same(proto: "mode"),
-    ]
+extension Tensorflow_Magenta_NoteSequence.KeySignature: SwiftProtobuf.Message, SwiftProtobuf
+    ._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding
+{
+  static let protoMessageName: String =
+    Tensorflow_Magenta_NoteSequence.protoMessageName + ".KeySignature"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "time"),
+    2: .same(proto: "key"),
+    3: .same(proto: "mode"),
+  ]
 
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let fieldNumber = try decoder.nextFieldNumber() {
-            switch fieldNumber {
-            case 1: try decoder.decodeSingularDoubleField(value: &time)
-            case 2: try decoder.decodeSingularEnumField(value: &key)
-            case 3: try decoder.decodeSingularEnumField(value: &mode)
-            default: break
-            }
-        }
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularDoubleField(value: &time)
+      case 2: try decoder.decodeSingularEnumField(value: &key)
+      case 3: try decoder.decodeSingularEnumField(value: &mode)
+      default: break
+      }
     }
+  }
 
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        if time != 0 {
-            try visitor.visitSingularDoubleField(value: time, fieldNumber: 1)
-        }
-        if key != .c {
-            try visitor.visitSingularEnumField(value: key, fieldNumber: 2)
-        }
-        if mode != .major {
-            try visitor.visitSingularEnumField(value: mode, fieldNumber: 3)
-        }
-        try unknownFields.traverse(visitor: &visitor)
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if time != 0 {
+      try visitor.visitSingularDoubleField(value: time, fieldNumber: 1)
     }
+    if key != .c {
+      try visitor.visitSingularEnumField(value: key, fieldNumber: 2)
+    }
+    if mode != .major {
+      try visitor.visitSingularEnumField(value: mode, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
 
-    static func == (lhs: Tensorflow_Magenta_NoteSequence.KeySignature, rhs: Tensorflow_Magenta_NoteSequence.KeySignature) -> Bool {
-        if lhs.time != rhs.time { return false }
-        if lhs.key != rhs.key { return false }
-        if lhs.mode != rhs.mode { return false }
-        if lhs.unknownFields != rhs.unknownFields { return false }
-        return true
-    }
+  static func == (
+    lhs: Tensorflow_Magenta_NoteSequence.KeySignature,
+    rhs: Tensorflow_Magenta_NoteSequence.KeySignature
+  ) -> Bool {
+    if lhs.time != rhs.time { return false }
+    if lhs.key != rhs.key { return false }
+    if lhs.mode != rhs.mode { return false }
+    if lhs.unknownFields != rhs.unknownFields { return false }
+    return true
+  }
 }
 
 extension Tensorflow_Magenta_NoteSequence.KeySignature.Key: SwiftProtobuf._ProtoNameProviding {
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        0: .same(proto: "C"),
-        1: .aliased(proto: "C_SHARP", aliases: ["D_FLAT"]),
-        2: .same(proto: "D"),
-        3: .aliased(proto: "D_SHARP", aliases: ["E_FLAT"]),
-        4: .same(proto: "E"),
-        5: .same(proto: "F"),
-        6: .aliased(proto: "F_SHARP", aliases: ["G_FLAT"]),
-        7: .same(proto: "G"),
-        8: .aliased(proto: "G_SHARP", aliases: ["A_FLAT"]),
-        9: .same(proto: "A"),
-        10: .aliased(proto: "A_SHARP", aliases: ["B_FLAT"]),
-        11: .same(proto: "B"),
-    ]
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "C"),
+    1: .aliased(proto: "C_SHARP", aliases: ["D_FLAT"]),
+    2: .same(proto: "D"),
+    3: .aliased(proto: "D_SHARP", aliases: ["E_FLAT"]),
+    4: .same(proto: "E"),
+    5: .same(proto: "F"),
+    6: .aliased(proto: "F_SHARP", aliases: ["G_FLAT"]),
+    7: .same(proto: "G"),
+    8: .aliased(proto: "G_SHARP", aliases: ["A_FLAT"]),
+    9: .same(proto: "A"),
+    10: .aliased(proto: "A_SHARP", aliases: ["B_FLAT"]),
+    11: .same(proto: "B"),
+  ]
 }
 
 extension Tensorflow_Magenta_NoteSequence.KeySignature.Mode: SwiftProtobuf._ProtoNameProviding {
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        0: .same(proto: "MAJOR"),
-        1: .same(proto: "MINOR"),
-        2: .same(proto: "NOT_SPECIFIED"),
-        3: .same(proto: "MIXOLYDIAN"),
-        4: .same(proto: "DORIAN"),
-        5: .same(proto: "PHRYGIAN"),
-        6: .same(proto: "LYDIAN"),
-        7: .same(proto: "LOCRIAN"),
-    ]
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "MAJOR"),
+    1: .same(proto: "MINOR"),
+    2: .same(proto: "NOT_SPECIFIED"),
+    3: .same(proto: "MIXOLYDIAN"),
+    4: .same(proto: "DORIAN"),
+    5: .same(proto: "PHRYGIAN"),
+    6: .same(proto: "LYDIAN"),
+    7: .same(proto: "LOCRIAN"),
+  ]
 }
 
-extension Tensorflow_Magenta_NoteSequence.Tempo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = Tensorflow_Magenta_NoteSequence.protoMessageName + ".Tempo"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .same(proto: "time"),
-        2: .same(proto: "qpm"),
-    ]
+extension Tensorflow_Magenta_NoteSequence.Tempo: SwiftProtobuf.Message, SwiftProtobuf
+    ._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding
+{
+  static let protoMessageName: String = Tensorflow_Magenta_NoteSequence.protoMessageName + ".Tempo"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "time"),
+    2: .same(proto: "qpm"),
+  ]
 
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let fieldNumber = try decoder.nextFieldNumber() {
-            switch fieldNumber {
-            case 1: try decoder.decodeSingularDoubleField(value: &time)
-            case 2: try decoder.decodeSingularDoubleField(value: &qpm)
-            default: break
-            }
-        }
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularDoubleField(value: &time)
+      case 2: try decoder.decodeSingularDoubleField(value: &qpm)
+      default: break
+      }
     }
+  }
 
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        if time != 0 {
-            try visitor.visitSingularDoubleField(value: time, fieldNumber: 1)
-        }
-        if qpm != 0 {
-            try visitor.visitSingularDoubleField(value: qpm, fieldNumber: 2)
-        }
-        try unknownFields.traverse(visitor: &visitor)
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if time != 0 {
+      try visitor.visitSingularDoubleField(value: time, fieldNumber: 1)
     }
+    if qpm != 0 {
+      try visitor.visitSingularDoubleField(value: qpm, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
 
-    static func == (lhs: Tensorflow_Magenta_NoteSequence.Tempo, rhs: Tensorflow_Magenta_NoteSequence.Tempo) -> Bool {
-        if lhs.time != rhs.time { return false }
-        if lhs.qpm != rhs.qpm { return false }
-        if lhs.unknownFields != rhs.unknownFields { return false }
-        return true
-    }
+  static func == (
+    lhs: Tensorflow_Magenta_NoteSequence.Tempo, rhs: Tensorflow_Magenta_NoteSequence.Tempo
+  ) -> Bool {
+    if lhs.time != rhs.time { return false }
+    if lhs.qpm != rhs.qpm { return false }
+    if lhs.unknownFields != rhs.unknownFields { return false }
+    return true
+  }
 }
 
-extension Tensorflow_Magenta_NoteSequence.PitchBend: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = Tensorflow_Magenta_NoteSequence.protoMessageName + ".PitchBend"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .same(proto: "time"),
-        2: .same(proto: "bend"),
-        3: .same(proto: "instrument"),
-        4: .same(proto: "program"),
-        5: .standard(proto: "is_drum"),
-    ]
+extension Tensorflow_Magenta_NoteSequence.PitchBend: SwiftProtobuf.Message, SwiftProtobuf
+    ._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding
+{
+  static let protoMessageName: String =
+    Tensorflow_Magenta_NoteSequence.protoMessageName + ".PitchBend"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "time"),
+    2: .same(proto: "bend"),
+    3: .same(proto: "instrument"),
+    4: .same(proto: "program"),
+    5: .standard(proto: "is_drum"),
+  ]
 
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let fieldNumber = try decoder.nextFieldNumber() {
-            switch fieldNumber {
-            case 1: try decoder.decodeSingularDoubleField(value: &time)
-            case 2: try decoder.decodeSingularInt32Field(value: &bend)
-            case 3: try decoder.decodeSingularInt32Field(value: &instrument)
-            case 4: try decoder.decodeSingularInt32Field(value: &program)
-            case 5: try decoder.decodeSingularBoolField(value: &isDrum)
-            default: break
-            }
-        }
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularDoubleField(value: &time)
+      case 2: try decoder.decodeSingularInt32Field(value: &bend)
+      case 3: try decoder.decodeSingularInt32Field(value: &instrument)
+      case 4: try decoder.decodeSingularInt32Field(value: &program)
+      case 5: try decoder.decodeSingularBoolField(value: &isDrum)
+      default: break
+      }
     }
+  }
 
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        if time != 0 {
-            try visitor.visitSingularDoubleField(value: time, fieldNumber: 1)
-        }
-        if bend != 0 {
-            try visitor.visitSingularInt32Field(value: bend, fieldNumber: 2)
-        }
-        if instrument != 0 {
-            try visitor.visitSingularInt32Field(value: instrument, fieldNumber: 3)
-        }
-        if program != 0 {
-            try visitor.visitSingularInt32Field(value: program, fieldNumber: 4)
-        }
-        if isDrum != false {
-            try visitor.visitSingularBoolField(value: isDrum, fieldNumber: 5)
-        }
-        try unknownFields.traverse(visitor: &visitor)
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if time != 0 {
+      try visitor.visitSingularDoubleField(value: time, fieldNumber: 1)
     }
+    if bend != 0 {
+      try visitor.visitSingularInt32Field(value: bend, fieldNumber: 2)
+    }
+    if instrument != 0 {
+      try visitor.visitSingularInt32Field(value: instrument, fieldNumber: 3)
+    }
+    if program != 0 {
+      try visitor.visitSingularInt32Field(value: program, fieldNumber: 4)
+    }
+    if isDrum != false {
+      try visitor.visitSingularBoolField(value: isDrum, fieldNumber: 5)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
 
-    static func == (lhs: Tensorflow_Magenta_NoteSequence.PitchBend, rhs: Tensorflow_Magenta_NoteSequence.PitchBend) -> Bool {
-        if lhs.time != rhs.time { return false }
-        if lhs.bend != rhs.bend { return false }
-        if lhs.instrument != rhs.instrument { return false }
-        if lhs.program != rhs.program { return false }
-        if lhs.isDrum != rhs.isDrum { return false }
-        if lhs.unknownFields != rhs.unknownFields { return false }
-        return true
-    }
+  static func == (
+    lhs: Tensorflow_Magenta_NoteSequence.PitchBend, rhs: Tensorflow_Magenta_NoteSequence.PitchBend
+  ) -> Bool {
+    if lhs.time != rhs.time { return false }
+    if lhs.bend != rhs.bend { return false }
+    if lhs.instrument != rhs.instrument { return false }
+    if lhs.program != rhs.program { return false }
+    if lhs.isDrum != rhs.isDrum { return false }
+    if lhs.unknownFields != rhs.unknownFields { return false }
+    return true
+  }
 }
 
-extension Tensorflow_Magenta_NoteSequence.ControlChange: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = Tensorflow_Magenta_NoteSequence.protoMessageName + ".ControlChange"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .same(proto: "time"),
-        7: .standard(proto: "quantized_step"),
-        2: .standard(proto: "control_number"),
-        3: .standard(proto: "control_value"),
-        4: .same(proto: "instrument"),
-        5: .same(proto: "program"),
-        6: .standard(proto: "is_drum"),
-    ]
+extension Tensorflow_Magenta_NoteSequence.ControlChange: SwiftProtobuf.Message, SwiftProtobuf
+    ._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding
+{
+  static let protoMessageName: String =
+    Tensorflow_Magenta_NoteSequence.protoMessageName + ".ControlChange"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "time"),
+    7: .standard(proto: "quantized_step"),
+    2: .standard(proto: "control_number"),
+    3: .standard(proto: "control_value"),
+    4: .same(proto: "instrument"),
+    5: .same(proto: "program"),
+    6: .standard(proto: "is_drum"),
+  ]
 
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let fieldNumber = try decoder.nextFieldNumber() {
-            switch fieldNumber {
-            case 1: try decoder.decodeSingularDoubleField(value: &time)
-            case 2: try decoder.decodeSingularInt32Field(value: &controlNumber)
-            case 3: try decoder.decodeSingularInt32Field(value: &controlValue)
-            case 4: try decoder.decodeSingularInt32Field(value: &instrument)
-            case 5: try decoder.decodeSingularInt32Field(value: &program)
-            case 6: try decoder.decodeSingularBoolField(value: &isDrum)
-            case 7: try decoder.decodeSingularInt64Field(value: &quantizedStep)
-            default: break
-            }
-        }
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularDoubleField(value: &time)
+      case 2: try decoder.decodeSingularInt32Field(value: &controlNumber)
+      case 3: try decoder.decodeSingularInt32Field(value: &controlValue)
+      case 4: try decoder.decodeSingularInt32Field(value: &instrument)
+      case 5: try decoder.decodeSingularInt32Field(value: &program)
+      case 6: try decoder.decodeSingularBoolField(value: &isDrum)
+      case 7: try decoder.decodeSingularInt64Field(value: &quantizedStep)
+      default: break
+      }
     }
+  }
 
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        if time != 0 {
-            try visitor.visitSingularDoubleField(value: time, fieldNumber: 1)
-        }
-        if controlNumber != 0 {
-            try visitor.visitSingularInt32Field(value: controlNumber, fieldNumber: 2)
-        }
-        if controlValue != 0 {
-            try visitor.visitSingularInt32Field(value: controlValue, fieldNumber: 3)
-        }
-        if instrument != 0 {
-            try visitor.visitSingularInt32Field(value: instrument, fieldNumber: 4)
-        }
-        if program != 0 {
-            try visitor.visitSingularInt32Field(value: program, fieldNumber: 5)
-        }
-        if isDrum != false {
-            try visitor.visitSingularBoolField(value: isDrum, fieldNumber: 6)
-        }
-        if quantizedStep != 0 {
-            try visitor.visitSingularInt64Field(value: quantizedStep, fieldNumber: 7)
-        }
-        try unknownFields.traverse(visitor: &visitor)
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if time != 0 {
+      try visitor.visitSingularDoubleField(value: time, fieldNumber: 1)
     }
+    if controlNumber != 0 {
+      try visitor.visitSingularInt32Field(value: controlNumber, fieldNumber: 2)
+    }
+    if controlValue != 0 {
+      try visitor.visitSingularInt32Field(value: controlValue, fieldNumber: 3)
+    }
+    if instrument != 0 {
+      try visitor.visitSingularInt32Field(value: instrument, fieldNumber: 4)
+    }
+    if program != 0 {
+      try visitor.visitSingularInt32Field(value: program, fieldNumber: 5)
+    }
+    if isDrum != false {
+      try visitor.visitSingularBoolField(value: isDrum, fieldNumber: 6)
+    }
+    if quantizedStep != 0 {
+      try visitor.visitSingularInt64Field(value: quantizedStep, fieldNumber: 7)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
 
-    static func == (lhs: Tensorflow_Magenta_NoteSequence.ControlChange, rhs: Tensorflow_Magenta_NoteSequence.ControlChange) -> Bool {
-        if lhs.time != rhs.time { return false }
-        if lhs.quantizedStep != rhs.quantizedStep { return false }
-        if lhs.controlNumber != rhs.controlNumber { return false }
-        if lhs.controlValue != rhs.controlValue { return false }
-        if lhs.instrument != rhs.instrument { return false }
-        if lhs.program != rhs.program { return false }
-        if lhs.isDrum != rhs.isDrum { return false }
-        if lhs.unknownFields != rhs.unknownFields { return false }
-        return true
-    }
+  static func == (
+    lhs: Tensorflow_Magenta_NoteSequence.ControlChange,
+    rhs: Tensorflow_Magenta_NoteSequence.ControlChange
+  ) -> Bool {
+    if lhs.time != rhs.time { return false }
+    if lhs.quantizedStep != rhs.quantizedStep { return false }
+    if lhs.controlNumber != rhs.controlNumber { return false }
+    if lhs.controlValue != rhs.controlValue { return false }
+    if lhs.instrument != rhs.instrument { return false }
+    if lhs.program != rhs.program { return false }
+    if lhs.isDrum != rhs.isDrum { return false }
+    if lhs.unknownFields != rhs.unknownFields { return false }
+    return true
+  }
 }
 
-extension Tensorflow_Magenta_NoteSequence.PartInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = Tensorflow_Magenta_NoteSequence.protoMessageName + ".PartInfo"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .same(proto: "part"),
-        2: .same(proto: "name"),
-    ]
+extension Tensorflow_Magenta_NoteSequence.PartInfo: SwiftProtobuf.Message, SwiftProtobuf
+    ._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding
+{
+  static let protoMessageName: String =
+    Tensorflow_Magenta_NoteSequence.protoMessageName + ".PartInfo"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "part"),
+    2: .same(proto: "name"),
+  ]
 
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let fieldNumber = try decoder.nextFieldNumber() {
-            switch fieldNumber {
-            case 1: try decoder.decodeSingularInt32Field(value: &part)
-            case 2: try decoder.decodeSingularStringField(value: &name)
-            default: break
-            }
-        }
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularInt32Field(value: &part)
+      case 2: try decoder.decodeSingularStringField(value: &name)
+      default: break
+      }
     }
+  }
 
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        if part != 0 {
-            try visitor.visitSingularInt32Field(value: part, fieldNumber: 1)
-        }
-        if !name.isEmpty {
-            try visitor.visitSingularStringField(value: name, fieldNumber: 2)
-        }
-        try unknownFields.traverse(visitor: &visitor)
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if part != 0 {
+      try visitor.visitSingularInt32Field(value: part, fieldNumber: 1)
     }
+    if !name.isEmpty {
+      try visitor.visitSingularStringField(value: name, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
 
-    static func == (lhs: Tensorflow_Magenta_NoteSequence.PartInfo, rhs: Tensorflow_Magenta_NoteSequence.PartInfo) -> Bool {
-        if lhs.part != rhs.part { return false }
-        if lhs.name != rhs.name { return false }
-        if lhs.unknownFields != rhs.unknownFields { return false }
-        return true
-    }
+  static func == (
+    lhs: Tensorflow_Magenta_NoteSequence.PartInfo, rhs: Tensorflow_Magenta_NoteSequence.PartInfo
+  ) -> Bool {
+    if lhs.part != rhs.part { return false }
+    if lhs.name != rhs.name { return false }
+    if lhs.unknownFields != rhs.unknownFields { return false }
+    return true
+  }
 }
 
-extension Tensorflow_Magenta_NoteSequence.InstrumentInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = Tensorflow_Magenta_NoteSequence.protoMessageName + ".InstrumentInfo"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .same(proto: "instrument"),
-        2: .same(proto: "name"),
-    ]
+extension Tensorflow_Magenta_NoteSequence.InstrumentInfo: SwiftProtobuf.Message, SwiftProtobuf
+    ._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding
+{
+  static let protoMessageName: String =
+    Tensorflow_Magenta_NoteSequence.protoMessageName + ".InstrumentInfo"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "instrument"),
+    2: .same(proto: "name"),
+  ]
 
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let fieldNumber = try decoder.nextFieldNumber() {
-            switch fieldNumber {
-            case 1: try decoder.decodeSingularInt32Field(value: &instrument)
-            case 2: try decoder.decodeSingularStringField(value: &name)
-            default: break
-            }
-        }
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularInt32Field(value: &instrument)
+      case 2: try decoder.decodeSingularStringField(value: &name)
+      default: break
+      }
     }
+  }
 
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        if instrument != 0 {
-            try visitor.visitSingularInt32Field(value: instrument, fieldNumber: 1)
-        }
-        if !name.isEmpty {
-            try visitor.visitSingularStringField(value: name, fieldNumber: 2)
-        }
-        try unknownFields.traverse(visitor: &visitor)
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if instrument != 0 {
+      try visitor.visitSingularInt32Field(value: instrument, fieldNumber: 1)
     }
+    if !name.isEmpty {
+      try visitor.visitSingularStringField(value: name, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
 
-    static func == (lhs: Tensorflow_Magenta_NoteSequence.InstrumentInfo, rhs: Tensorflow_Magenta_NoteSequence.InstrumentInfo) -> Bool {
-        if lhs.instrument != rhs.instrument { return false }
-        if lhs.name != rhs.name { return false }
-        if lhs.unknownFields != rhs.unknownFields { return false }
-        return true
-    }
+  static func == (
+    lhs: Tensorflow_Magenta_NoteSequence.InstrumentInfo,
+    rhs: Tensorflow_Magenta_NoteSequence.InstrumentInfo
+  ) -> Bool {
+    if lhs.instrument != rhs.instrument { return false }
+    if lhs.name != rhs.name { return false }
+    if lhs.unknownFields != rhs.unknownFields { return false }
+    return true
+  }
 }
 
-extension Tensorflow_Magenta_NoteSequence.SourceInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = Tensorflow_Magenta_NoteSequence.protoMessageName + ".SourceInfo"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .standard(proto: "source_type"),
-        2: .standard(proto: "encoding_type"),
-        3: .same(proto: "parser"),
-    ]
+extension Tensorflow_Magenta_NoteSequence.SourceInfo: SwiftProtobuf.Message, SwiftProtobuf
+    ._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding
+{
+  static let protoMessageName: String =
+    Tensorflow_Magenta_NoteSequence.protoMessageName + ".SourceInfo"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "source_type"),
+    2: .standard(proto: "encoding_type"),
+    3: .same(proto: "parser"),
+  ]
 
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let fieldNumber = try decoder.nextFieldNumber() {
-            switch fieldNumber {
-            case 1: try decoder.decodeSingularEnumField(value: &sourceType)
-            case 2: try decoder.decodeSingularEnumField(value: &encodingType)
-            case 3: try decoder.decodeSingularEnumField(value: &parser)
-            default: break
-            }
-        }
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularEnumField(value: &sourceType)
+      case 2: try decoder.decodeSingularEnumField(value: &encodingType)
+      case 3: try decoder.decodeSingularEnumField(value: &parser)
+      default: break
+      }
     }
+  }
 
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        if sourceType != .unknownSourceType {
-            try visitor.visitSingularEnumField(value: sourceType, fieldNumber: 1)
-        }
-        if encodingType != .unknownEncodingType {
-            try visitor.visitSingularEnumField(value: encodingType, fieldNumber: 2)
-        }
-        if parser != .unknownParser {
-            try visitor.visitSingularEnumField(value: parser, fieldNumber: 3)
-        }
-        try unknownFields.traverse(visitor: &visitor)
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if sourceType != .unknownSourceType {
+      try visitor.visitSingularEnumField(value: sourceType, fieldNumber: 1)
     }
+    if encodingType != .unknownEncodingType {
+      try visitor.visitSingularEnumField(value: encodingType, fieldNumber: 2)
+    }
+    if parser != .unknownParser {
+      try visitor.visitSingularEnumField(value: parser, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
 
-    static func == (lhs: Tensorflow_Magenta_NoteSequence.SourceInfo, rhs: Tensorflow_Magenta_NoteSequence.SourceInfo) -> Bool {
-        if lhs.sourceType != rhs.sourceType { return false }
-        if lhs.encodingType != rhs.encodingType { return false }
-        if lhs.parser != rhs.parser { return false }
-        if lhs.unknownFields != rhs.unknownFields { return false }
-        return true
-    }
+  static func == (
+    lhs: Tensorflow_Magenta_NoteSequence.SourceInfo, rhs: Tensorflow_Magenta_NoteSequence.SourceInfo
+  ) -> Bool {
+    if lhs.sourceType != rhs.sourceType { return false }
+    if lhs.encodingType != rhs.encodingType { return false }
+    if lhs.parser != rhs.parser { return false }
+    if lhs.unknownFields != rhs.unknownFields { return false }
+    return true
+  }
 }
 
 extension Tensorflow_Magenta_NoteSequence.SourceInfo.SourceType: SwiftProtobuf._ProtoNameProviding {
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        0: .same(proto: "UNKNOWN_SOURCE_TYPE"),
-        1: .same(proto: "SCORE_BASED"),
-        2: .same(proto: "PERFORMANCE_BASED"),
-    ]
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "UNKNOWN_SOURCE_TYPE"),
+    1: .same(proto: "SCORE_BASED"),
+    2: .same(proto: "PERFORMANCE_BASED"),
+  ]
 }
 
-extension Tensorflow_Magenta_NoteSequence.SourceInfo.EncodingType: SwiftProtobuf._ProtoNameProviding {
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        0: .same(proto: "UNKNOWN_ENCODING_TYPE"),
-        1: .same(proto: "MUSIC_XML"),
-        2: .same(proto: "ABC"),
-        3: .same(proto: "MIDI"),
-        4: .same(proto: "MUSICNET"),
-    ]
+extension Tensorflow_Magenta_NoteSequence.SourceInfo.EncodingType: SwiftProtobuf._ProtoNameProviding
+{
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "UNKNOWN_ENCODING_TYPE"),
+    1: .same(proto: "MUSIC_XML"),
+    2: .same(proto: "ABC"),
+    3: .same(proto: "MIDI"),
+    4: .same(proto: "MUSICNET"),
+  ]
 }
 
 extension Tensorflow_Magenta_NoteSequence.SourceInfo.Parser: SwiftProtobuf._ProtoNameProviding {
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        0: .same(proto: "UNKNOWN_PARSER"),
-        1: .same(proto: "MUSIC21"),
-        2: .same(proto: "PRETTY_MIDI"),
-        3: .same(proto: "MAGENTA_MUSIC_XML"),
-        4: .same(proto: "MAGENTA_MUSICNET"),
-        5: .same(proto: "MAGENTA_ABC"),
-        6: .same(proto: "TONEJS_MIDI_CONVERT"),
-    ]
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "UNKNOWN_PARSER"),
+    1: .same(proto: "MUSIC21"),
+    2: .same(proto: "PRETTY_MIDI"),
+    3: .same(proto: "MAGENTA_MUSIC_XML"),
+    4: .same(proto: "MAGENTA_MUSICNET"),
+    5: .same(proto: "MAGENTA_ABC"),
+    6: .same(proto: "TONEJS_MIDI_CONVERT"),
+  ]
 }
 
-extension Tensorflow_Magenta_NoteSequence.TextAnnotation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = Tensorflow_Magenta_NoteSequence.protoMessageName + ".TextAnnotation"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .same(proto: "time"),
-        4: .standard(proto: "quantized_step"),
-        2: .same(proto: "text"),
-        3: .standard(proto: "annotation_type"),
-    ]
+extension Tensorflow_Magenta_NoteSequence.TextAnnotation: SwiftProtobuf.Message, SwiftProtobuf
+    ._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding
+{
+  static let protoMessageName: String =
+    Tensorflow_Magenta_NoteSequence.protoMessageName + ".TextAnnotation"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "time"),
+    4: .standard(proto: "quantized_step"),
+    2: .same(proto: "text"),
+    3: .standard(proto: "annotation_type"),
+  ]
 
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let fieldNumber = try decoder.nextFieldNumber() {
-            switch fieldNumber {
-            case 1: try decoder.decodeSingularDoubleField(value: &time)
-            case 2: try decoder.decodeSingularStringField(value: &text)
-            case 3: try decoder.decodeSingularEnumField(value: &annotationType)
-            case 4: try decoder.decodeSingularInt64Field(value: &quantizedStep)
-            default: break
-            }
-        }
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularDoubleField(value: &time)
+      case 2: try decoder.decodeSingularStringField(value: &text)
+      case 3: try decoder.decodeSingularEnumField(value: &annotationType)
+      case 4: try decoder.decodeSingularInt64Field(value: &quantizedStep)
+      default: break
+      }
     }
+  }
 
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        if time != 0 {
-            try visitor.visitSingularDoubleField(value: time, fieldNumber: 1)
-        }
-        if !text.isEmpty {
-            try visitor.visitSingularStringField(value: text, fieldNumber: 2)
-        }
-        if annotationType != .unknown {
-            try visitor.visitSingularEnumField(value: annotationType, fieldNumber: 3)
-        }
-        if quantizedStep != 0 {
-            try visitor.visitSingularInt64Field(value: quantizedStep, fieldNumber: 4)
-        }
-        try unknownFields.traverse(visitor: &visitor)
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if time != 0 {
+      try visitor.visitSingularDoubleField(value: time, fieldNumber: 1)
     }
+    if !text.isEmpty {
+      try visitor.visitSingularStringField(value: text, fieldNumber: 2)
+    }
+    if annotationType != .unknown {
+      try visitor.visitSingularEnumField(value: annotationType, fieldNumber: 3)
+    }
+    if quantizedStep != 0 {
+      try visitor.visitSingularInt64Field(value: quantizedStep, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
 
-    static func == (lhs: Tensorflow_Magenta_NoteSequence.TextAnnotation, rhs: Tensorflow_Magenta_NoteSequence.TextAnnotation) -> Bool {
-        if lhs.time != rhs.time { return false }
-        if lhs.quantizedStep != rhs.quantizedStep { return false }
-        if lhs.text != rhs.text { return false }
-        if lhs.annotationType != rhs.annotationType { return false }
-        if lhs.unknownFields != rhs.unknownFields { return false }
-        return true
-    }
+  static func == (
+    lhs: Tensorflow_Magenta_NoteSequence.TextAnnotation,
+    rhs: Tensorflow_Magenta_NoteSequence.TextAnnotation
+  ) -> Bool {
+    if lhs.time != rhs.time { return false }
+    if lhs.quantizedStep != rhs.quantizedStep { return false }
+    if lhs.text != rhs.text { return false }
+    if lhs.annotationType != rhs.annotationType { return false }
+    if lhs.unknownFields != rhs.unknownFields { return false }
+    return true
+  }
 }
 
-extension Tensorflow_Magenta_NoteSequence.TextAnnotation.TextAnnotationType: SwiftProtobuf._ProtoNameProviding {
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        0: .same(proto: "UNKNOWN"),
-        1: .same(proto: "CHORD_SYMBOL"),
-        2: .same(proto: "BEAT"),
-    ]
+extension Tensorflow_Magenta_NoteSequence.TextAnnotation.TextAnnotationType: SwiftProtobuf
+    ._ProtoNameProviding
+{
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "UNKNOWN"),
+    1: .same(proto: "CHORD_SYMBOL"),
+    2: .same(proto: "BEAT"),
+  ]
 }
 
-extension Tensorflow_Magenta_NoteSequence.QuantizationInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = Tensorflow_Magenta_NoteSequence.protoMessageName + ".QuantizationInfo"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .standard(proto: "steps_per_quarter"),
-        2: .standard(proto: "steps_per_second"),
-    ]
+extension Tensorflow_Magenta_NoteSequence.QuantizationInfo: SwiftProtobuf.Message, SwiftProtobuf
+    ._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding
+{
+  static let protoMessageName: String =
+    Tensorflow_Magenta_NoteSequence.protoMessageName + ".QuantizationInfo"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "steps_per_quarter"),
+    2: .standard(proto: "steps_per_second"),
+  ]
 
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let fieldNumber = try decoder.nextFieldNumber() {
-            switch fieldNumber {
-            case 1:
-                if resolution != nil { try decoder.handleConflictingOneOf() }
-                var v: Int32?
-                try decoder.decodeSingularInt32Field(value: &v)
-                if let v = v { resolution = .stepsPerQuarter(v) }
-            case 2:
-                if resolution != nil { try decoder.handleConflictingOneOf() }
-                var v: Int32?
-                try decoder.decodeSingularInt32Field(value: &v)
-                if let v = v { resolution = .stepsPerSecond(v) }
-            default: break
-            }
-        }
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1:
+        if resolution != nil { try decoder.handleConflictingOneOf() }
+        var v: Int32?
+        try decoder.decodeSingularInt32Field(value: &v)
+        if let v = v { resolution = .stepsPerQuarter(v) }
+      case 2:
+        if resolution != nil { try decoder.handleConflictingOneOf() }
+        var v: Int32?
+        try decoder.decodeSingularInt32Field(value: &v)
+        if let v = v { resolution = .stepsPerSecond(v) }
+      default: break
+      }
     }
+  }
 
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        switch resolution {
-        case let .stepsPerQuarter(v)?:
-            try visitor.visitSingularInt32Field(value: v, fieldNumber: 1)
-        case let .stepsPerSecond(v)?:
-            try visitor.visitSingularInt32Field(value: v, fieldNumber: 2)
-        case nil: break
-        }
-        try unknownFields.traverse(visitor: &visitor)
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    switch resolution {
+    case let .stepsPerQuarter(v)?:
+      try visitor.visitSingularInt32Field(value: v, fieldNumber: 1)
+    case let .stepsPerSecond(v)?:
+      try visitor.visitSingularInt32Field(value: v, fieldNumber: 2)
+    case nil: break
     }
+    try unknownFields.traverse(visitor: &visitor)
+  }
 
-    static func == (lhs: Tensorflow_Magenta_NoteSequence.QuantizationInfo, rhs: Tensorflow_Magenta_NoteSequence.QuantizationInfo) -> Bool {
-        if lhs.resolution != rhs.resolution { return false }
-        if lhs.unknownFields != rhs.unknownFields { return false }
-        return true
-    }
+  static func == (
+    lhs: Tensorflow_Magenta_NoteSequence.QuantizationInfo,
+    rhs: Tensorflow_Magenta_NoteSequence.QuantizationInfo
+  ) -> Bool {
+    if lhs.resolution != rhs.resolution { return false }
+    if lhs.unknownFields != rhs.unknownFields { return false }
+    return true
+  }
 }
 
-extension Tensorflow_Magenta_NoteSequence.SubsequenceInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = Tensorflow_Magenta_NoteSequence.protoMessageName + ".SubsequenceInfo"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .standard(proto: "start_time_offset"),
-        2: .standard(proto: "end_time_offset"),
-    ]
+extension Tensorflow_Magenta_NoteSequence.SubsequenceInfo: SwiftProtobuf.Message, SwiftProtobuf
+    ._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding
+{
+  static let protoMessageName: String =
+    Tensorflow_Magenta_NoteSequence.protoMessageName + ".SubsequenceInfo"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "start_time_offset"),
+    2: .standard(proto: "end_time_offset"),
+  ]
 
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let fieldNumber = try decoder.nextFieldNumber() {
-            switch fieldNumber {
-            case 1: try decoder.decodeSingularDoubleField(value: &startTimeOffset)
-            case 2: try decoder.decodeSingularDoubleField(value: &endTimeOffset)
-            default: break
-            }
-        }
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularDoubleField(value: &startTimeOffset)
+      case 2: try decoder.decodeSingularDoubleField(value: &endTimeOffset)
+      default: break
+      }
     }
+  }
 
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        if startTimeOffset != 0 {
-            try visitor.visitSingularDoubleField(value: startTimeOffset, fieldNumber: 1)
-        }
-        if endTimeOffset != 0 {
-            try visitor.visitSingularDoubleField(value: endTimeOffset, fieldNumber: 2)
-        }
-        try unknownFields.traverse(visitor: &visitor)
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if startTimeOffset != 0 {
+      try visitor.visitSingularDoubleField(value: startTimeOffset, fieldNumber: 1)
     }
+    if endTimeOffset != 0 {
+      try visitor.visitSingularDoubleField(value: endTimeOffset, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
 
-    static func == (lhs: Tensorflow_Magenta_NoteSequence.SubsequenceInfo, rhs: Tensorflow_Magenta_NoteSequence.SubsequenceInfo) -> Bool {
-        if lhs.startTimeOffset != rhs.startTimeOffset { return false }
-        if lhs.endTimeOffset != rhs.endTimeOffset { return false }
-        if lhs.unknownFields != rhs.unknownFields { return false }
-        return true
-    }
+  static func == (
+    lhs: Tensorflow_Magenta_NoteSequence.SubsequenceInfo,
+    rhs: Tensorflow_Magenta_NoteSequence.SubsequenceInfo
+  ) -> Bool {
+    if lhs.startTimeOffset != rhs.startTimeOffset { return false }
+    if lhs.endTimeOffset != rhs.endTimeOffset { return false }
+    if lhs.unknownFields != rhs.unknownFields { return false }
+    return true
+  }
 }
 
-extension Tensorflow_Magenta_NoteSequence.SectionAnnotation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = Tensorflow_Magenta_NoteSequence.protoMessageName + ".SectionAnnotation"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .same(proto: "time"),
-        4: .standard(proto: "section_id"),
-    ]
+extension Tensorflow_Magenta_NoteSequence.SectionAnnotation: SwiftProtobuf.Message, SwiftProtobuf
+    ._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding
+{
+  static let protoMessageName: String =
+    Tensorflow_Magenta_NoteSequence.protoMessageName + ".SectionAnnotation"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "time"),
+    4: .standard(proto: "section_id"),
+  ]
 
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let fieldNumber = try decoder.nextFieldNumber() {
-            switch fieldNumber {
-            case 1: try decoder.decodeSingularDoubleField(value: &time)
-            case 4: try decoder.decodeSingularInt64Field(value: &sectionID)
-            default: break
-            }
-        }
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularDoubleField(value: &time)
+      case 4: try decoder.decodeSingularInt64Field(value: &sectionID)
+      default: break
+      }
     }
+  }
 
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        if time != 0 {
-            try visitor.visitSingularDoubleField(value: time, fieldNumber: 1)
-        }
-        if sectionID != 0 {
-            try visitor.visitSingularInt64Field(value: sectionID, fieldNumber: 4)
-        }
-        try unknownFields.traverse(visitor: &visitor)
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if time != 0 {
+      try visitor.visitSingularDoubleField(value: time, fieldNumber: 1)
     }
+    if sectionID != 0 {
+      try visitor.visitSingularInt64Field(value: sectionID, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
 
-    static func == (lhs: Tensorflow_Magenta_NoteSequence.SectionAnnotation, rhs: Tensorflow_Magenta_NoteSequence.SectionAnnotation) -> Bool {
-        if lhs.time != rhs.time { return false }
-        if lhs.sectionID != rhs.sectionID { return false }
-        if lhs.unknownFields != rhs.unknownFields { return false }
-        return true
-    }
+  static func == (
+    lhs: Tensorflow_Magenta_NoteSequence.SectionAnnotation,
+    rhs: Tensorflow_Magenta_NoteSequence.SectionAnnotation
+  ) -> Bool {
+    if lhs.time != rhs.time { return false }
+    if lhs.sectionID != rhs.sectionID { return false }
+    if lhs.unknownFields != rhs.unknownFields { return false }
+    return true
+  }
 }
 
-extension Tensorflow_Magenta_NoteSequence.Section: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = Tensorflow_Magenta_NoteSequence.protoMessageName + ".Section"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .standard(proto: "section_id"),
-        2: .standard(proto: "section_group"),
-    ]
+extension Tensorflow_Magenta_NoteSequence.Section: SwiftProtobuf.Message, SwiftProtobuf
+    ._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding
+{
+  static let protoMessageName: String =
+    Tensorflow_Magenta_NoteSequence.protoMessageName + ".Section"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "section_id"),
+    2: .standard(proto: "section_group"),
+  ]
 
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let fieldNumber = try decoder.nextFieldNumber() {
-            switch fieldNumber {
-            case 1:
-                if sectionType != nil { try decoder.handleConflictingOneOf() }
-                var v: Int64?
-                try decoder.decodeSingularInt64Field(value: &v)
-                if let v = v { sectionType = .sectionID(v) }
-            case 2:
-                var v: Tensorflow_Magenta_NoteSequence.SectionGroup?
-                if let current = sectionType {
-                    try decoder.handleConflictingOneOf()
-                    if case let .sectionGroup(m) = current { v = m }
-                }
-                try decoder.decodeSingularMessageField(value: &v)
-                if let v = v { sectionType = .sectionGroup(v) }
-            default: break
-            }
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1:
+        if sectionType != nil { try decoder.handleConflictingOneOf() }
+        var v: Int64?
+        try decoder.decodeSingularInt64Field(value: &v)
+        if let v = v { sectionType = .sectionID(v) }
+      case 2:
+        var v: Tensorflow_Magenta_NoteSequence.SectionGroup?
+        if let current = sectionType {
+          try decoder.handleConflictingOneOf()
+          if case let .sectionGroup(m) = current { v = m }
         }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v { sectionType = .sectionGroup(v) }
+      default: break
+      }
     }
+  }
 
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        switch sectionType {
-        case let .sectionID(v)?:
-            try visitor.visitSingularInt64Field(value: v, fieldNumber: 1)
-        case let .sectionGroup(v)?:
-            try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
-        case nil: break
-        }
-        try unknownFields.traverse(visitor: &visitor)
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    switch sectionType {
+    case let .sectionID(v)?:
+      try visitor.visitSingularInt64Field(value: v, fieldNumber: 1)
+    case let .sectionGroup(v)?:
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    case nil: break
     }
+    try unknownFields.traverse(visitor: &visitor)
+  }
 
-    static func == (lhs: Tensorflow_Magenta_NoteSequence.Section, rhs: Tensorflow_Magenta_NoteSequence.Section) -> Bool {
-        if lhs.sectionType != rhs.sectionType { return false }
-        if lhs.unknownFields != rhs.unknownFields { return false }
-        return true
-    }
+  static func == (
+    lhs: Tensorflow_Magenta_NoteSequence.Section, rhs: Tensorflow_Magenta_NoteSequence.Section
+  ) -> Bool {
+    if lhs.sectionType != rhs.sectionType { return false }
+    if lhs.unknownFields != rhs.unknownFields { return false }
+    return true
+  }
 }
 
-extension Tensorflow_Magenta_NoteSequence.SectionGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = Tensorflow_Magenta_NoteSequence.protoMessageName + ".SectionGroup"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .same(proto: "sections"),
-        2: .standard(proto: "num_times"),
-    ]
+extension Tensorflow_Magenta_NoteSequence.SectionGroup: SwiftProtobuf.Message, SwiftProtobuf
+    ._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding
+{
+  static let protoMessageName: String =
+    Tensorflow_Magenta_NoteSequence.protoMessageName + ".SectionGroup"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "sections"),
+    2: .standard(proto: "num_times"),
+  ]
 
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let fieldNumber = try decoder.nextFieldNumber() {
-            switch fieldNumber {
-            case 1: try decoder.decodeRepeatedMessageField(value: &sections)
-            case 2: try decoder.decodeSingularInt32Field(value: &numTimes)
-            default: break
-            }
-        }
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeRepeatedMessageField(value: &sections)
+      case 2: try decoder.decodeSingularInt32Field(value: &numTimes)
+      default: break
+      }
     }
+  }
 
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        if !sections.isEmpty {
-            try visitor.visitRepeatedMessageField(value: sections, fieldNumber: 1)
-        }
-        if numTimes != 0 {
-            try visitor.visitSingularInt32Field(value: numTimes, fieldNumber: 2)
-        }
-        try unknownFields.traverse(visitor: &visitor)
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !sections.isEmpty {
+      try visitor.visitRepeatedMessageField(value: sections, fieldNumber: 1)
     }
+    if numTimes != 0 {
+      try visitor.visitSingularInt32Field(value: numTimes, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
 
-    static func == (lhs: Tensorflow_Magenta_NoteSequence.SectionGroup, rhs: Tensorflow_Magenta_NoteSequence.SectionGroup) -> Bool {
-        if lhs.sections != rhs.sections { return false }
-        if lhs.numTimes != rhs.numTimes { return false }
-        if lhs.unknownFields != rhs.unknownFields { return false }
-        return true
-    }
+  static func == (
+    lhs: Tensorflow_Magenta_NoteSequence.SectionGroup,
+    rhs: Tensorflow_Magenta_NoteSequence.SectionGroup
+  ) -> Bool {
+    if lhs.sections != rhs.sections { return false }
+    if lhs.numTimes != rhs.numTimes { return false }
+    if lhs.unknownFields != rhs.unknownFields { return false }
+    return true
+  }
 }
 
-extension Tensorflow_Magenta_SequenceMetadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".SequenceMetadata"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .same(proto: "title"),
-        2: .same(proto: "artist"),
-        3: .same(proto: "genre"),
-        4: .same(proto: "composers"),
-    ]
+extension Tensorflow_Magenta_SequenceMetadata: SwiftProtobuf.Message, SwiftProtobuf
+    ._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding
+{
+  static let protoMessageName: String = _protobuf_package + ".SequenceMetadata"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "title"),
+    2: .same(proto: "artist"),
+    3: .same(proto: "genre"),
+    4: .same(proto: "composers"),
+  ]
 
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let fieldNumber = try decoder.nextFieldNumber() {
-            switch fieldNumber {
-            case 1: try decoder.decodeSingularStringField(value: &title)
-            case 2: try decoder.decodeSingularStringField(value: &artist)
-            case 3: try decoder.decodeRepeatedStringField(value: &genre)
-            case 4: try decoder.decodeRepeatedStringField(value: &composers)
-            default: break
-            }
-        }
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularStringField(value: &title)
+      case 2: try decoder.decodeSingularStringField(value: &artist)
+      case 3: try decoder.decodeRepeatedStringField(value: &genre)
+      case 4: try decoder.decodeRepeatedStringField(value: &composers)
+      default: break
+      }
     }
+  }
 
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        if !title.isEmpty {
-            try visitor.visitSingularStringField(value: title, fieldNumber: 1)
-        }
-        if !artist.isEmpty {
-            try visitor.visitSingularStringField(value: artist, fieldNumber: 2)
-        }
-        if !genre.isEmpty {
-            try visitor.visitRepeatedStringField(value: genre, fieldNumber: 3)
-        }
-        if !composers.isEmpty {
-            try visitor.visitRepeatedStringField(value: composers, fieldNumber: 4)
-        }
-        try unknownFields.traverse(visitor: &visitor)
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !title.isEmpty {
+      try visitor.visitSingularStringField(value: title, fieldNumber: 1)
     }
+    if !artist.isEmpty {
+      try visitor.visitSingularStringField(value: artist, fieldNumber: 2)
+    }
+    if !genre.isEmpty {
+      try visitor.visitRepeatedStringField(value: genre, fieldNumber: 3)
+    }
+    if !composers.isEmpty {
+      try visitor.visitRepeatedStringField(value: composers, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
 
-    static func == (lhs: Tensorflow_Magenta_SequenceMetadata, rhs: Tensorflow_Magenta_SequenceMetadata) -> Bool {
-        if lhs.title != rhs.title { return false }
-        if lhs.artist != rhs.artist { return false }
-        if lhs.genre != rhs.genre { return false }
-        if lhs.composers != rhs.composers { return false }
-        if lhs.unknownFields != rhs.unknownFields { return false }
-        return true
-    }
+  static func == (
+    lhs: Tensorflow_Magenta_SequenceMetadata, rhs: Tensorflow_Magenta_SequenceMetadata
+  ) -> Bool {
+    if lhs.title != rhs.title { return false }
+    if lhs.artist != rhs.artist { return false }
+    if lhs.genre != rhs.genre { return false }
+    if lhs.composers != rhs.composers { return false }
+    if lhs.unknownFields != rhs.unknownFields { return false }
+    return true
+  }
 }
 
-extension Tensorflow_Magenta_VelocityRange: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".VelocityRange"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .same(proto: "min"),
-        2: .same(proto: "max"),
-    ]
+extension Tensorflow_Magenta_VelocityRange: SwiftProtobuf.Message, SwiftProtobuf
+    ._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding
+{
+  static let protoMessageName: String = _protobuf_package + ".VelocityRange"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "min"),
+    2: .same(proto: "max"),
+  ]
 
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let fieldNumber = try decoder.nextFieldNumber() {
-            switch fieldNumber {
-            case 1: try decoder.decodeSingularInt32Field(value: &min)
-            case 2: try decoder.decodeSingularInt32Field(value: &max)
-            default: break
-            }
-        }
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularInt32Field(value: &min)
+      case 2: try decoder.decodeSingularInt32Field(value: &max)
+      default: break
+      }
     }
+  }
 
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        if min != 0 {
-            try visitor.visitSingularInt32Field(value: min, fieldNumber: 1)
-        }
-        if max != 0 {
-            try visitor.visitSingularInt32Field(value: max, fieldNumber: 2)
-        }
-        try unknownFields.traverse(visitor: &visitor)
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if min != 0 {
+      try visitor.visitSingularInt32Field(value: min, fieldNumber: 1)
     }
+    if max != 0 {
+      try visitor.visitSingularInt32Field(value: max, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
 
-    static func == (lhs: Tensorflow_Magenta_VelocityRange, rhs: Tensorflow_Magenta_VelocityRange) -> Bool {
-        if lhs.min != rhs.min { return false }
-        if lhs.max != rhs.max { return false }
-        if lhs.unknownFields != rhs.unknownFields { return false }
-        return true
-    }
+  static func == (lhs: Tensorflow_Magenta_VelocityRange, rhs: Tensorflow_Magenta_VelocityRange)
+    -> Bool
+  {
+    if lhs.min != rhs.min { return false }
+    if lhs.max != rhs.max { return false }
+    if lhs.unknownFields != rhs.unknownFields { return false }
+    return true
+  }
 }
