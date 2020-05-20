@@ -12,7 +12,6 @@
 		1B424468246BB98800EFD266 /* music.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B424467246BB98800EFD266 /* music.pb.swift */; };
 		1B42446B246BBD0E00EFD266 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 1B42446A246BBD0E00EFD266 /* SwiftProtobuf */; };
 		1B42EA7B246E4EFC00593190 /* Midi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B42EA7A246E4EFC00593190 /* Midi.swift */; };
-		1B44C4D12474A16900B207C5 /* DrumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B44C4D02474A16900B207C5 /* DrumView.swift */; };
 		1B8CFD1E247214B600B7680D /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8CFD1D247214B600B7680D /* Music.swift */; };
 		1B97B18D246FC949003A34AA /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B97B18C246FC3F1003A34AA /* config.json */; };
 		1BF716F22466E48B0004C843 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF716F12466E48B0004C843 /* AppDelegate.swift */; };
@@ -47,7 +46,6 @@
 		1B28850F246839D200E9670B /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		1B424467246BB98800EFD266 /* music.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = music.pb.swift; sourceTree = "<group>"; };
 		1B42EA7A246E4EFC00593190 /* Midi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Midi.swift; sourceTree = "<group>"; };
-		1B44C4D02474A16900B207C5 /* DrumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrumView.swift; sourceTree = "<group>"; };
 		1B8CFD1D247214B600B7680D /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		1B97B18C246FC3F1003A34AA /* config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 		1BF716EE2466E48B0004C843 /* BeatBlender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatBlender.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,7 +137,6 @@
 				1B0DEAEB246D2C8900B2637D /* Utils.swift */,
 				1B42EA7A246E4EFC00593190 /* Midi.swift */,
 				1B8CFD1D247214B600B7680D /* Music.swift */,
-				1B44C4D02474A16900B207C5 /* DrumView.swift */,
 			);
 			path = BeatBlender;
 			sourceTree = "<group>";
@@ -309,7 +306,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B288510246839D200E9670B /* Request.swift in Sources */,
-				1B44C4D12474A16900B207C5 /* DrumView.swift in Sources */,
 				1BF716F22466E48B0004C843 /* AppDelegate.swift in Sources */,
 				1BF716F42466E48B0004C843 /* SceneDelegate.swift in Sources */,
 				1B42EA7B246E4EFC00593190 /* Midi.swift in Sources */,
