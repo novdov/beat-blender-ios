@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1BF716ED2466E48B0004C843"
-               BuildableName = "BeatBlender.app"
-               BlueprintName = "BeatBlender"
-               ReferencedContainer = "container:BeatBlender.xcodeproj">
+               BuildableName = "BeatIt.app"
+               BlueprintName = "BeatIt"
+               ReferencedContainer = "container:BeatIt.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1BF717032466E48F0004C843"
-               BuildableName = "BeatBlenderTests.xctest"
-               BlueprintName = "BeatBlenderTests"
-               ReferencedContainer = "container:BeatBlender.xcodeproj">
+               BuildableName = "BeatItTests.xctest"
+               BlueprintName = "BeatItTests"
+               ReferencedContainer = "container:BeatIt.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1BF7170E2466E48F0004C843"
-               BuildableName = "BeatBlenderUITests.xctest"
-               BlueprintName = "BeatBlenderUITests"
-               ReferencedContainer = "container:BeatBlender.xcodeproj">
+               BuildableName = "BeatItUITests.xctest"
+               BlueprintName = "BeatItUITests"
+               ReferencedContainer = "container:BeatIt.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1BF716ED2466E48B0004C843"
-            BuildableName = "BeatBlender.app"
-            BlueprintName = "BeatBlender"
-            ReferencedContainer = "container:BeatBlender.xcodeproj">
+            BuildableName = "BeatIt.app"
+            BlueprintName = "BeatIt"
+            ReferencedContainer = "container:BeatIt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -83,9 +83,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1BF716ED2466E48B0004C843"
-            BuildableName = "BeatBlender.app"
-            BlueprintName = "BeatBlender"
-            ReferencedContainer = "container:BeatBlender.xcodeproj">
+            BuildableName = "BeatIt.app"
+            BlueprintName = "BeatIt"
+            ReferencedContainer = "container:BeatIt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
