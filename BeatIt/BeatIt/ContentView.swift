@@ -1,11 +1,3 @@
-//
-//  ContentView.swift
-//  BeatBlender
-//
-//  Created by 김선웅 on 2020/05/09.
-//  Copyright © 2020 novdov. All rights reserved.
-//
-
 import AVFoundation
 import SwiftUI
 
@@ -14,14 +6,20 @@ let config = loadJson(filename: "config")!
 struct ContentView: View {
   let spliceRequest = BeatBlenderRequest(baseUrl: config["serverUrl"] as! String)
   var midiPlayerHelper = MIDIPlayerHelper()
+  @State var played = false
   @State var midiPlayer: AVMIDIPlayer?
+  @State var buttonText = "Beat It!"
+  @State var mediaButtonName = "play.fill"
 
   var body: some View {
-    VStack {
-      Button(action: {
-        self.sample()
-      }) {
-        Text("Beat It!")
+    Button(action: {
+      self.buttonText = self.played ? self.buttonText : "Stop"
+      self.mediaButtonName = self.played ? self.mediaButtonName : "pause.fill"
+      self.sample()
+    }) {
+      HStack {
+        Image(systemName: self.mediaButtonName)
+        Text(self.buttonText)
       }
     }.buttonStyle(GradientButtonStyle())
   }
@@ -35,6 +33,7 @@ struct ContentView: View {
     let midiData = data.takeUnretainedValue() as Data
     midiPlayer = midiPlayerHelper.createAVMIDIPlayer(withData: midiData)
     data.release()
+    self.played = true
     midiPlayer?.play()
   }
 
@@ -54,6 +53,7 @@ struct ContentView: View {
           }
           for noteSequence in noteSequences {
             self.playDrums(noteSequence: noteSequence)
+            self.played = false
           }
         case let .failure(error):
           print(error)
