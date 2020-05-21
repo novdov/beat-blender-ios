@@ -15,14 +15,15 @@ struct ContentView: View {
   let spliceRequest = BeatBlenderRequest(baseUrl: config["serverUrl"] as! String)
   var midiPlayerHelper = MIDIPlayerHelper()
   @State var midiPlayer: AVMIDIPlayer?
-  @State var sampledNoteSequences = [Tensorflow_Magenta_NoteSequence]()
 
   var body: some View {
-    Button(action: {
-      self.sample()
-    }) {
-      Text("Sample")
-    }
+    VStack {
+      Button(action: {
+        self.sample()
+      }) {
+        Text("Beat It!")
+      }
+    }.buttonStyle(GradientButtonStyle())
   }
 
   func playDrums(noteSequence: Tensorflow_Magenta_NoteSequence) {
@@ -58,6 +59,23 @@ struct ContentView: View {
           print(error)
         }
       })
+  }
+}
+
+struct GradientButtonStyle: ButtonStyle {
+  func makeBody(configuration: Self.Configuration) -> some View {
+    configuration.label
+      .foregroundColor(Color.white)
+      .padding()
+      .background(
+        LinearGradient(
+          gradient: Gradient(colors: [Color.red, Color.orange]),
+          startPoint: .leading,
+          endPoint: .trailing
+        )
+      )
+      .cornerRadius(15.0)
+      .scaleEffect(configuration.isPressed ? 1.2 : 1.0)
   }
 }
 
