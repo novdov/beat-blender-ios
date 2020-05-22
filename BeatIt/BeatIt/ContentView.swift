@@ -6,19 +6,25 @@ let config = loadJson(filename: "config")!
 struct ContentView: View {
   let spliceRequest = BeatBlenderRequest(baseUrl: config["serverUrl"] as! String)
   var midiPlayerHelper = MIDIPlayerHelper()
-  @State var played = false
   @State var midiPlayer: AVMIDIPlayer?
   @State var buttonText = "Beat It!"
-  @State var mediaButtonName = "play.fill"
+  @State var buttonImage = "play.fill"
 
   var body: some View {
     Button(action: {
-      self.buttonText = self.played ? self.buttonText : "Stop"
-      self.mediaButtonName = self.played ? self.mediaButtonName : "pause.fill"
-      self.sample()
+      if self.midiPlayer == nil {
+        self.sample()
+        self.buttonText = "Stop"
+        self.buttonImage = "stop.fill"
+      } else {
+        self.midiPlayer?.stop()
+        self.midiPlayer = nil
+        self.buttonText = "Beat It!"
+        self.buttonImage = "play.fill"
+      }
     }) {
       HStack {
-        Image(systemName: self.mediaButtonName)
+        Image(systemName: self.buttonImage)
         Text(self.buttonText)
       }
     }.buttonStyle(GradientButtonStyle())
@@ -33,7 +39,6 @@ struct ContentView: View {
     let midiData = data.takeUnretainedValue() as Data
     midiPlayer = midiPlayerHelper.createAVMIDIPlayer(withData: midiData)
     data.release()
-    self.played = true
     midiPlayer?.play()
   }
 
@@ -53,7 +58,6 @@ struct ContentView: View {
           }
           for noteSequence in noteSequences {
             self.playDrums(noteSequence: noteSequence)
-            self.played = false
           }
         case let .failure(error):
           print(error)
